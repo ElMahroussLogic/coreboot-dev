@@ -139,8 +139,13 @@ void mp_start_exec(void) {
       mp_put_string(buf + strlen("echo"));
       mp_put_string("\r\n");
     }  else if (strcmp(buf, "boot") == 0) {
-      mp_put_string(">> Booting from EPM...\r\n");
-      mp_put_string(">> No media attached.\r\n");
+      mp_put_string(">> booting from /dev/bootable/...\r\n");
+      mp_put_string(">> mo media attached.\r\n");
+    } else if (strcmp("reset", buf) == 0) { 
+      __mp_hart_counter = 0UL; // to make sure that we try again.
+      mp_restart_machine(); // now restart the machine.
+     
+      return;  // if it doesnt work on your platform, this will jump back to the reset vector.
     } else {
       mp_put_string(">> syntax error: ");
       mp_put_string(*buf == 0 ? "empty input." : buf);
