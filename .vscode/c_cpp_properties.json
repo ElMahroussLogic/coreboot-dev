@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "CoreBoot",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "__COMPILE_RISCV__"
+            ],
+            "compilerPath": "C:\\SysGCC\\risc-v\\bin\\riscv64-unknown-elf-gcc",
+            "cStandard": "c17",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}

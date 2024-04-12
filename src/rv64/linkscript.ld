@@ -1,0 +1,49 @@
+ENTRY(mp_reset_vector);
+ 
+. = 0x80000000;
+
+SECTIONS {
+	.text : ALIGN(4K) {
+		PROVIDE(_text_start = .);
+
+		*(.init);
+		*(.text);
+
+		PROVIDE(_text_end = .);
+	}
+
+	PROVIDE(mp_global_pointer = .);
+
+	.bss : ALIGN(4K) {
+		PROVIDE(_bss_start = .);
+		
+		*(.bss);
+
+		PROVIDE(_bss_end = .);
+	}
+
+	.rodata : ALIGN(4K) {
+		PROVIDE(_rodata_start = .);
+
+		*(.rodata);
+		
+		PROVIDE(_rodata_end = .);
+	}
+
+
+	.data : ALIGN(4K) {
+		PROVIDE(_data_start = .);
+
+		*(.data);
+
+		PROVIDE(_data_end = .);
+	}
+
+	PROVIDE(__sz = .);
+
+	PROVIDE(mp_stack_start = _bss_end);
+	PROVIDE(mp_stack_end = mp_stack_start + 0x8000);
+
+	PROVIDE(mp_memory_end = .);
+	PROVIDE(mp_boot_processor_ready = .);
+}
