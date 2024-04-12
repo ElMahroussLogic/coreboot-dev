@@ -132,8 +132,8 @@ struct __attribute__((packed)) mp_boot_header {
 };
 
 #ifdef __COMPILE_RISCV__
-# define MP_BOOT_ADDR (0x80070000)
-# define MP_BOOT_ADDR_STR "0x80070000"
+# define MP_BOOT_ADDR (0x80200000)
+# define MP_BOOT_ADDR_STR "0x80200000"
 # define MP_FRAMEBUFFER_ADDR 0x40000000L
 #elif defined(__COMPILE_POWERPC__)
 # define MP_BOOT_ADDR 0x1030000
@@ -154,7 +154,7 @@ struct __attribute__((packed)) mp_boot_header {
 #define MP_BOOT_VER 0x104
 
 #define MP_BOOT_CALL(struct, offset)                                           \
-  mp_proc_t proc_##offset = (mp_proc_t)(struct->offset);                       \
+  mp_proc_t proc_##offset = (mp_proc_t)((uintptr_t*)struct->offset);                       \
   proc_##offset();
 
 

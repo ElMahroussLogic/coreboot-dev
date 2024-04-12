@@ -80,7 +80,9 @@ void mp_start_exec(void) {
         mp_put_char('\n');
       }
 
-      MP_BOOT_CALL(boot_hdr, h_start_address);
+      if (boot_hdr->h_start_address != 0) {
+        MP_BOOT_CALL(boot_hdr, h_start_address);
+      }
 
       mp_put_string(">> context returned? (LX0002)\r\n");
     }
