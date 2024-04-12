@@ -43,9 +43,6 @@ void mp_start_exec(void) {
     mp_put_string(__DATE__);
     mp_put_string("\r\r\n");
 
-    mp_append_scsi_tree();
-    mp_append_video_tree();
-
 #ifdef __COMPILE_POWERPC__
     mp_put_string(">> CPU: NeWS PowerPC Machine.\r\r\n");
 #endif  // __COMPILE_POWERPC__
@@ -138,12 +135,10 @@ void mp_start_exec(void) {
 
     if (strcmp(buf, "uname") == 0) {
       mp_print_kernel_name();
-    }
-    else if (strcmp("echo", buf) == 0) {
+    } else if (strcmp("echo", buf) == 0) {
       mp_put_string(buf + strlen("echo"));
       mp_put_string("\r\n");
-    }
-    else if (strcmp(buf, "boot") == 0) {
+    }  else if (strcmp(buf, "boot") == 0) {
       mp_put_string(">> Booting from EPM...\r\n");
       mp_put_string(">> No media attached.\r\n");
     } else {
