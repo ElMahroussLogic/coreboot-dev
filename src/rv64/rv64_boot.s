@@ -4,7 +4,7 @@
  *	CoreBoot
  * 	Copyright 2024, Mahrouss Logic, all rights reserved.
  * 	
- *  Brief: Runtime 0 code for RISC-V.
+ *  	Purpose: Startup code for RISC-V.
  * 
  * 	========================================================
  */
@@ -36,6 +36,8 @@ mp_reset_vector:
 
 	la t5, _bss_start
 	la t6, _bss_end
+
+	csrw satp, zero
 
 crt0_bss_clear:
 	sd zero, (t5)
