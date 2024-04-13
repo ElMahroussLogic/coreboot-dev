@@ -27,6 +27,7 @@ mp_reset_vector:
 
 .global mp_start_rom
 .global mp_start_context
+.global mp_boot_processor_ready
 
 .equ MP_BOOT_ADDR, 0x1030000 
 
@@ -49,3 +50,7 @@ run_context:
 /*	.long	__stack*/
 	.long	stack_top
 
+.data
+
+mp_boot_processor_ready:
+	.word 0

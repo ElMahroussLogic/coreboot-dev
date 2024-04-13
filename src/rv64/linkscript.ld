@@ -39,11 +39,8 @@ SECTIONS {
 		PROVIDE(_data_end = .);
 	}
 
-	PROVIDE(__sz = .);
-
-	PROVIDE(mp_stack_start = _bss_end);
-	PROVIDE(mp_stack_end = mp_stack_start + 0x8000);
+	PROVIDE(mp_stack_end = . + 0x1000);
 
 	PROVIDE(mp_memory_end = .);
-	PROVIDE(mp_boot_processor_ready = .);
+	PROVIDE(mp_boot_processor_ready = . + 0x4);
 }

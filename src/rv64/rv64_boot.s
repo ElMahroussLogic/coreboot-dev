@@ -25,6 +25,21 @@
 mp_reset_vector:
 	.cfi_startproc
 
+	csrr t0, mhartid
+	beqz t0, mp_start_exec_asm
+
+	j mp_start_other
+
+	.cfi_endproc
+
+mp_start_exec_asm:
+	lw t0, __mp_hart_counter
+	lw t1, mp_boot_processor_ready
+
+	not t0, t0
+	
+	addi t1, zero, 1
+
 .option push
 .option norelax
 
@@ -42,20 +57,6 @@ crt0_bss_clear:
 	addi t5, t5, 8
 	bgeu t5, t6, crt0_bss_clear
 
-	csrr t0, mhartid
-	beqz t0, mp_start_exec_asm
-
-	j mp_start_other
-
-	.cfi_endproc
-
-mp_start_exec_asm:
-	lw t0, __mp_hart_counter
-	lw t1, mp_boot_processor_ready
-
-	not t0, t0
-	
-	addi t1, zero, 1
 
 	j mp_start_exec
 	j mp_hang

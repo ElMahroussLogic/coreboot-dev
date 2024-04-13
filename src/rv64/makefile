@@ -20,7 +20,7 @@ LD=riscv64-unknown-elf-ld
 OBJ=$ $(wildcard *.o)
 FLAGS_LD= --script=linkscript.ld -o $(FIRMWARE)
 
-EMU=qemu-system-riscv64 -m 4G -smp 4 -machine virt -bios $(FIRMWARE) -d int -device VGA
+EMU=qemu-system-riscv64 -m 4G -smp 2 -machine virt -bios $(FIRMWARE) -d int -device VGA
 
 # link (make firmware)
 .PHONY: firmware-link

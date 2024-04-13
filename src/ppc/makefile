@@ -21,7 +21,7 @@ OBJ=$ $(wildcard *.o)
 FLAGS_LD= --script=linkscript.ld -o $(FIRMWARE) -nostdlib
 
 EMU=qemu-system-ppc64
-EMU_FLAGS= -drive file=cdrom.epm,media=disk,snapshot=off,format=raw -device virtio-scsi-pci,id=scsi -device VGA -cpu e500 -d guest_errors,unimp -M ppce500 -bios $(FIRMWARE) -s
+EMU_FLAGS= -drive file=cdrom.epm,media=disk,snapshot=off,format=raw -device virtio-scsi-pci,id=scsi -smp 4 -device VGA -cpu e500 -d guest_errors,unimp -M ppce500 -bios $(FIRMWARE) -s
 
 
 QEMU_IMG=qemu-img create -f qcow2 cdrom.epm 256M

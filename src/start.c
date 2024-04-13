@@ -28,6 +28,8 @@ extern void mp_append_video_tree(void);
 extern void mp_start_context(uintptr_t);
 extern void mp_start_rom(void);
 
+extern int  mp_boot_processor_ready;
+
 /// @brief hardware thread counter.
 uint64_t __mp_hart_counter = 0UL;
 
@@ -84,6 +86,7 @@ void mp_start_exec(void) {
       }
 
       if (boot_hdr->h_start_address != 0) {
+	mp_boot_processor_ready = 1;
         mp_start_context(boot_hdr->h_start_address);
       }
 
@@ -98,6 +101,15 @@ void mp_start_exec(void) {
   /// TODO: boot from EPM here
   
   /// end of TODO
+  
+  if (hart > 1) {
+	  while (1) {
+	  	if (__mp_hart_counter == 0) {
+			mp_restart_machine();
+			return;
+		}
+	  }
+  }
 
   /// since context isnt present in ROM, we can run this tiny shell now.
   while (yes) {
