@@ -8,8 +8,8 @@
  # 	========================================================
  #
 
-CC=powerpc-linux-gnu-gcc
-AS=powerpc-linux-gnu-as
+CC=powerpc-eabi-gcc
+AS=powerpc-eabi-as
 FIRMWARE=core-boot.elf
 FLAGS=-c -mcpu=8540  -D__COMPILE_POWERPC__ -I../../ -Wall -c -nostdlib -ffreestanding -fno-builtin -D__BSTRICT__ -D__BDEBUG__
 C_SRC=$(wildcard *.c) $(wildcard ../*.c) -c

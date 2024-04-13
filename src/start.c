@@ -55,8 +55,8 @@ void mp_start_exec(void) {
 
   /// @brief Boots here if LX header matches what we except.
 
-  volatile struct mp_boot_header *boot_hdr =
-      (volatile struct mp_boot_header *)(MP_BOOT_ADDR);
+  struct mp_boot_header *boot_hdr =
+      (struct mp_boot_header *)(MP_BOOT_ADDR);
 
   /**
       boot if:
@@ -67,14 +67,14 @@ void mp_start_exec(void) {
       boot_hdr->h_mag[1] == MP_BOOT_MAG_1) {
     if (boot_hdr->h_revision != MP_BOOT_VER) {
       if (hart == 1) {
-        mp_put_string(">> Can't boot context. (LX0003)\r\n");
+        mp_put_string(">> can't boot context. (LX0003)\r\n");
       }
     } else {
       if (hart == 1) {
-        mp_put_string(">> Switch to context: ");
+        mp_put_string(">> switch to context: ");
         mp_put_string((const char *)boot_hdr->h_name);
         mp_put_char('\r');
-        mp_put_char('\n');
+        mp_put_char('\n');  
       }
 
       if (boot_hdr->h_start_address != 0) {
@@ -85,7 +85,7 @@ void mp_start_exec(void) {
     }
   } else {
     if (hart == 1) {
-      mp_put_string(">> Can't boot context. (LX0001)\r\n");
+      mp_put_string(">> can't boot context. (LX0001)\r\n");
     }
   }
 

@@ -57,10 +57,13 @@ typedef ptrtype_t size_t;
 #define __no 0
 #define __yes 1
 
+#define boolean char
+
 #define no __no
 #define yes __yes
 
 #ifndef __cplusplus
+#define bool boolean
 #define false no
 #define true yes
 #endif //!_cplusplus
@@ -68,7 +71,16 @@ typedef ptrtype_t size_t;
 #define MP_RESTART 0
 #define MP_SHUTDOWN 1
 
-#define boolean char
+/// @brief float type.
+typedef union {
+	struct {
+		char sign;
+		int mantissa;
+		short exponent;
+	};
+
+	float f;
+} float_t;
 
 /// \brief UTF-32 character
 typedef uint32_t utf_char_t;
@@ -117,6 +129,10 @@ size_t strlen(caddr_t str);
 /// @return 
 size_t strcmp(caddr_t src, caddr_t cmp);
 
+/// @brief printf implementation
+/// @param fmt format of the printf.
+size_t printf(caddr_t fmt, ...);
+
 typedef void (*mp_proc_t)();
 
 /// \brief ASCII character.
@@ -131,9 +147,11 @@ struct __attribute__((packed)) mp_boot_header {
   const uintptr_t h_start_address; // start address (master/slave thread)
 };
 
+#define __COPYRIGHT(s) /* unused */
+
 #ifdef __COMPILE_RISCV__
-# define MP_BOOT_ADDR (0x80200000)
-# define MP_BOOT_ADDR_STR "0x80200000"
+# define MP_BOOT_ADDR (0x8002000)
+# define MP_BOOT_ADDR_STR "0x8002000"
 # define MP_FRAMEBUFFER_ADDR 0x40000000L
 #elif defined(__COMPILE_POWERPC__)
 # define MP_BOOT_ADDR 0x1030000
@@ -148,13 +166,17 @@ struct __attribute__((packed)) mp_boot_header {
 
 #define MP_STRING(s) #s
 
-#define MP_BOOT_MAG_0 'L'
-#define MP_BOOT_MAG_1 'X'
+#define MP_BOOT_MAG_0 'C'
+#define MP_BOOT_MAG_1 'B'
 
-#define MP_BOOT_VER 0x104
+#define MP_BOOT_VER 0x101
 
 #define MP_BOOT_CALL(struct, offset)                                           \
-  mp_proc_t proc_##offset = (mp_proc_t)((uintptr_t*)struct->offset);                       \
+  mp_proc_t proc_##offset = (mp_proc_t)(struct->offset);                       \
   proc_##offset();
 
+
+
+
+// EOF.
 
