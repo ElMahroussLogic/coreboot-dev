@@ -72,6 +72,22 @@ mp_start_other_wait:
 	add t0, zero, t1
 	j mp_hang
 
+.global mp_start_rom
+.global mp_start_context
+
+mp_start_context:
+	mv ra, zero
+	add ra, zero, a1
+	mret
+
+.equ MP_BOOT_ADDR, 0x80020000
+
+mp_start_rom:
+	li x5, MP_BOOT_ADDR
+	mv ra, zero
+	add ra, zero, t0
+	mret
+
 mp_hang:
 	j mp_start_exec
 L0:

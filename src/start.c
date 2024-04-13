@@ -25,6 +25,9 @@
 extern void mp_append_scsi_tree(void);
 extern void mp_append_video_tree(void);
 
+extern void mp_start_context(uintptr_t);
+extern void mp_start_rom(void);
+
 /// @brief hardware thread counter.
 uint64_t __mp_hart_counter = 0UL;
 
@@ -55,19 +58,20 @@ void mp_start_exec(void) {
 
   /// @brief Boots here if LX header matches what we except.
 
-  struct mp_boot_header *boot_hdr =
-      (struct mp_boot_header *)(MP_BOOT_ADDR);
+   volatile struct mp_boot_header *boot_hdr =
+      (volatile struct mp_boot_header *)(MP_BOOT_ADDR);
 
   /**
       boot if:
           - ident matches.
           - version matches.
   */
+
   if (boot_hdr->h_mag[0] == MP_BOOT_MAG_0 &&
       boot_hdr->h_mag[1] == MP_BOOT_MAG_1) {
     if (boot_hdr->h_revision != MP_BOOT_VER) {
       if (hart == 1) {
-        mp_put_string(">> can't boot context. (LX0003)\r\n");
+        mp_put_string(">> can't boot context. (CB0003)\r\n");
       }
     } else {
       if (hart == 1) {
@@ -80,14 +84,14 @@ void mp_start_exec(void) {
       }
 
       if (boot_hdr->h_start_address != 0) {
-        MP_BOOT_CALL(boot_hdr, h_start_address);
+        mp_start_context(boot_hdr->h_start_address);
       }
 
-      mp_put_string(">> context returned? (LX0002)\r\n");
+      mp_put_string(">> context returned? (CB0002)\r\n");
     }
   } else {
     if (hart == 1) {
-      mp_put_string(">> can't boot context. (LX0001)\r\n");
+      mp_put_string(">> can't boot context. (CB0001)\r\n");
     }
   }
 
@@ -140,10 +144,14 @@ void mp_start_exec(void) {
     } else if (strcmp("echo", buf) == 0) {
       mp_put_string(buf + strlen("echo"));
       mp_put_string("\r\n");
-    }  else if (strcmp(buf, "boot") == 0) {
-      mp_put_string(">> booting from /dev/bootable/...\r\n");
-      mp_put_string(">> mo media attached.\r\n");
+    } else if (strcmp("boot", buf) == 0) {
+      mp_put_string(">> booting from /dev/bd0...\r\n");
+      goto cb_restart_label;
+    } else if (strcmp("rom-boot", buf) == 0) {
+      mp_put_string(">> booting from memory...\r\n");
+      mp_start_rom();
     } else if (strcmp("reset", buf) == 0) { 
+cb_restart_label:
       __mp_hart_counter = 0UL; // to make sure that we try again.
       mp_restart_machine(); // now restart the machine.
      

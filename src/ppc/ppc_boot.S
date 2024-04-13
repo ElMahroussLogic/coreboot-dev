@@ -25,8 +25,26 @@ mp_reset_vector:
 
 	trap
 
+.global mp_start_rom
+.global mp_start_context
 
-	
+.equ MP_BOOT_ADDR, 0x1030000 
+
+mp_start_rom:
+	lis 3, MP_BOOT_ADDR@h
+	addi 3, 3, MP_BOOT_ADDR@l
+
+	blr
+
+mp_start_context:
+	li 4, 0
+	cmp 0, 0, 4, 3
+	blt run_context
+	mr 3, 31
+	blr
+run_context:
+	blr /* r3 is filled here */
+
 .Lstk:
 /*	.long	__stack*/
 	.long	stack_top
