@@ -75,6 +75,8 @@ void mp_start_exec(void) {
         mp_put_string((const char *)boot_hdr->h_name);
         mp_put_char('\r');
         mp_put_char('\n');  
+      
+      	// printf(">> address: %x\n", boot_hdr->h_start_address);
       }
 
       if (boot_hdr->h_start_address != 0) {
