@@ -8,15 +8,15 @@
  # 	========================================================
  #
 
-CC=powerpc-linux-gnu-gcc
-AS=powerpc-linux-gnu-as
+CC=ppc-elf-gcc
+AS=ppc-elf-as
 FIRMWARE=core-boot.elf
 FLAGS=-c -mcpu=8540  -D__COMPILE_POWERPC__ -I../../ -Wall -c -nostdlib -ffreestanding -fno-builtin -D__BSTRICT__ -D__BDEBUG__
 C_SRC=$(wildcard *.c) $(wildcard ../*.c) -c
 
 AS_FLAGS= -c  -I../../ -c
 
-LD=powerpc-linux-gnu-ld
+LD=ppc-elf-ld
 OBJ=$ $(wildcard *.o)
 FLAGS_LD= --script=linkscript.ld -o $(FIRMWARE) -nostdlib
 
