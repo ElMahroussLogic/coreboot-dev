@@ -23,13 +23,13 @@ FLAGS_LD= --script=linkscript.ld -o $(FIRMWARE) -nostdlib
 EMU=qemu-system-ppc64
 EMU_FLAGS= -drive file=cdrom.epm,media=disk,snapshot=off,format=raw -device virtio-scsi-pci,id=scsi -smp 4 -device VGA -cpu e500 -d guest_errors,unimp -M ppce500 -bios $(FIRMWARE) -s
 
+WAIT=sleep 1
 
 QEMU_IMG=qemu-img create -f qcow2 cdrom.epm 256M
 
-# link (make firmware)
 .PHONY: firmware-link
 firmware-link: firmware-compile
-	sleep 1
+	$(WAIT)
 	$(LD) $(OBJ) $(FLAGS_LD)
 	$(QEMU_IMG)
 

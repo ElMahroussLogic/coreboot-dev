@@ -18,8 +18,7 @@
 #include <lib/pci-tree.h>
 #include <lib/types.h>
 
-#define SYS_AHCI_BASE_ADDRESS (0xFE008004)  // 4M
-#define SYS_AHCI_DRIVER_NAME ("@ahci")
+#define SYS_AHCI_DRIVER_NAME    ("@ahci")
 
 /// BUGS: 0
 /// @brief AHCI support for PowerPC.
