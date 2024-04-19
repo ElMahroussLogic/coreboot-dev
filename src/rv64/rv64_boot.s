@@ -3,9 +3,9 @@
  *
  *	CoreBoot
  * 	Copyright 2024, Mahrouss Logic, all rights reserved.
- * 	
+ *
  *  	Purpose: Startup code for RISC-V.
- * 
+ *
  * 	========================================================
  */
 
@@ -37,7 +37,7 @@ mp_start_exec_asm:
 	lw t1, mp_boot_processor_ready
 
 	not t0, t0
-	
+
 	addi t1, zero, 1
 
 .option push
@@ -81,10 +81,10 @@ mp_start_context:
 	add ra, zero, a1
 	mret
 
-.equ MP_BOOT_ADDR, 0x80020000
+.equ SYS_BOOT_ADDR, 0x80020000
 
 mp_start_rom:
-	li x5, MP_BOOT_ADDR
+	li x5, SYS_BOOT_ADDR
 	mv ra, zero
 	add ra, zero, t0
 	mret

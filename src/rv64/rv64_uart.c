@@ -11,11 +11,11 @@
 
 /* this file handles the UART */
 
-static uint8_t* mp_uart_ptr = (uint8_t*)MP_UART_BASE;
+static uint8_t* mp_uart_ptr = (uint8_t*)SYS_UART_BASE;
 
 utf_char_t mp_get_char(void)
 {
-    uintptr_t ptr = MP_UART_BASE;
+    uintptr_t ptr = SYS_UART_BASE;
     while (!(*(((volatile uint8_t*)ptr) + 0x05) & 0x01));
 
     return (utf_char_t)*mp_uart_ptr;

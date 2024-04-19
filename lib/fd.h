@@ -28,9 +28,9 @@ typedef struct _mp_file_descriptor
 
 /// @brief Grabs a new device reference.
 /// @param path the device path.
-/// @return 
-mp_file_descriptor_t* mp_grab_device(const char* path);
+/// @return
+mp_file_descriptor_t* mp_grab_file(const char* path);
 
 /// @brief Releases the device.
 /// @param dev the device.
-int mp_release_device(mp_file_descriptor_t* dev);
+int mp_release_file(mp_file_descriptor_t* file);

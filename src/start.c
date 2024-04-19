@@ -61,7 +61,7 @@ void mp_start_exec(void) {
   /// @brief Boots here if LX header matches what we except.
 
    volatile struct mp_boot_header *boot_hdr =
-      (volatile struct mp_boot_header *)(MP_BOOT_ADDR);
+      (volatile struct mp_boot_header *)(SYS_BOOT_ADDR);
 
   /**
       boot if:
@@ -69,9 +69,9 @@ void mp_start_exec(void) {
           - version matches.
   */
 
-  if (boot_hdr->h_mag[0] == MP_BOOT_MAG_0 &&
-      boot_hdr->h_mag[1] == MP_BOOT_MAG_1) {
-    if (boot_hdr->h_revision != MP_BOOT_VER) {
+  if (boot_hdr->h_mag[0] == SYS_BOOT_MAG_0 &&
+      boot_hdr->h_mag[1] == SYS_BOOT_MAG_1) {
+    if (boot_hdr->h_revision != SYS_BOOT_VER) {
       if (hart == 1) {
         mp_put_string(">> can't boot context. (CB0003)\r\n");
       }
@@ -80,8 +80,8 @@ void mp_start_exec(void) {
         mp_put_string(">> switch to context: ");
         mp_put_string((const char *)boot_hdr->h_name);
         mp_put_char('\r');
-        mp_put_char('\n');  
-      
+        mp_put_char('\n');
+
       	// printf(">> address: %x\n", boot_hdr->h_start_address);
       }
 
@@ -99,9 +99,9 @@ void mp_start_exec(void) {
   }
 
   /// TODO: boot from EPM here
-  
+
   /// end of TODO
-  
+
   if (hart > 1) {
 	  while (1) {
 	  	if (__mp_hart_counter == 0) {
@@ -122,9 +122,22 @@ void mp_start_exec(void) {
     char ch = mp_get_char();
 
     while (ch != 0xD) {
-      mp_put_char(ch);
+      if (ch == 127) {
 
-      if (ch != '\b') {
+          buf[bufSz] = 0;
+
+          if (bufSz > 0) {
+              --bufSz;
+              mp_put_string("\033[D");
+          }
+
+          ch = mp_get_char();
+          continue;
+      } else {
+          mp_put_char(ch);
+      }
+
+      if (ch != 127) {
         switch (ch) {
           case '\\': {
             mp_put_char('\r');
@@ -138,9 +151,6 @@ void mp_start_exec(void) {
 
         buf[bufSz] = ch;
         ++bufSz;
-      } else {
-        buf[bufSz] = 0;
-        --bufSz;
       }
 
       if (bufSz > 255)
@@ -153,8 +163,8 @@ void mp_start_exec(void) {
 
     if (strcmp(buf, "uname") == 0) {
       mp_print_kernel_name();
-    } else if (strcmp("echo", buf) == 0) {
-      mp_put_string(buf + strlen("echo"));
+    } else if (strcmp("echo ", buf) == 0) {
+      mp_put_string(buf + strlen("echo "));
       mp_put_string("\r\n");
     } else if (strcmp("boot", buf) == 0) {
       mp_put_string(">> booting from /dev/bd0...\r\n");
@@ -162,11 +172,11 @@ void mp_start_exec(void) {
     } else if (strcmp("rom-boot", buf) == 0) {
       mp_put_string(">> booting from memory...\r\n");
       mp_start_rom();
-    } else if (strcmp("reset", buf) == 0) { 
+    } else if (strcmp("reset", buf) == 0) {
 cb_restart_label:
       __mp_hart_counter = 0UL; // to make sure that we try again.
       mp_restart_machine(); // now restart the machine.
-     
+
       return;  // if it doesnt work on your platform, this will jump back to the reset vector.
     } else {
       mp_put_string(">> syntax error: ");

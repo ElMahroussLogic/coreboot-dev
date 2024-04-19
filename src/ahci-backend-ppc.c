@@ -18,8 +18,8 @@
 #include <lib/pci-tree.h>
 #include <lib/types.h>
 
-#define MP_AHCI_BASE_ADDRESS (0xFE008004)  // 4M
-#define MP_AHCI_DRIVER_NAME ("@ahci")
+#define SYS_AHCI_BASE_ADDRESS (0xFE008004)  // 4M
+#define SYS_AHCI_DRIVER_NAME ("@ahci")
 
 /// BUGS: 0
 /// @brief AHCI support for PowerPC.
@@ -48,8 +48,8 @@ typedef struct hba_port {
 } hba_port_t;
 
 /// @brief Check if port is active.
-/// @param port 
-/// @return 
+/// @param port
+/// @return
 static boolean hba_port_active(volatile hba_port_t* port) {
   if (!port) return false;
 
@@ -57,8 +57,8 @@ static boolean hba_port_active(volatile hba_port_t* port) {
 }
 
 /// @brief Start HBA command.
-/// @param port 
-/// @return 
+/// @param port
+/// @return
 static boolean hba_start_cmd(volatile hba_port_t* port) {
   if (!port) return false;
 
@@ -77,8 +77,8 @@ static boolean hba_start_cmd(volatile hba_port_t* port) {
 }
 
 /// @brief Stop HBA command.
-/// @param port 
-/// @return 
+/// @param port
+/// @return
 static boolean hba_stop_cmd(volatile hba_port_t* port) {
   if (!port) return false;
 

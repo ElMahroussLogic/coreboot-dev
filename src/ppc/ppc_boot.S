@@ -14,7 +14,7 @@ mp_reset_vector:
 	lis	0,0
 	stw	0,0(1)		/* clear back chain */
 	stwu	1,-64(1)		/* push another stack frame */
-	
+
 	/* Let her rip */
 
 	bl 	mp_init_hw
@@ -29,11 +29,11 @@ mp_reset_vector:
 .global mp_start_context
 .global mp_boot_processor_ready
 
-.equ MP_BOOT_ADDR, 0x1030000 
+.equ SYS_BOOT_ADDR, 0x1030000
 
 mp_start_rom:
-	lis 3, MP_BOOT_ADDR@h
-	addi 3, 3, MP_BOOT_ADDR@l
+	lis 3, SYS_BOOT_ADDR@h
+	addi 3, 3, SYS_BOOT_ADDR@l
 
 	blr
 

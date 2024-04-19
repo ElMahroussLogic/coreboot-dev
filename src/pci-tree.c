@@ -10,9 +10,9 @@
  * @brief PCI Device Tree implementation.
  * @version 0.1
  * @date 2024-01-22
- * 
+ *
  * @copyright Copyright (c) 2024 Mahrouss Logic
- * 
+ *
  */
 
 #include <lib/pci-tree.h>
@@ -33,7 +33,7 @@ static volatile struct hw_mp_pci_tree* mp_last_tree = nil;
 /// Otherwise true.
 boolean mp_pci_init_tree(void)
 {
-    mp_base_tree = (volatile struct hw_mp_pci_tree*)(MP_PCI_TREE_BASE);
+    mp_base_tree = (volatile struct hw_mp_pci_tree*)(SYS_PCI_TREE_BASE);
 
     // huh? anyway let's ignore it then.
     if (mp_base_tree->d_magic != SYS_PCI_DEV_MAGIC)
@@ -101,4 +101,3 @@ boolean mp_pci_append_tree(const caddr_t name, mp_pci_num_t struct_ptr, mp_pci_n
 
     return yes;
 }
-

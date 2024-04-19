@@ -17,18 +17,18 @@ void mp_write_tlb(uint32_t mas0, uint32_t mas1, uint32_t mas2, uint32_t mas3, ui
 	mtspr(MAS2, mas2);
 	mtspr(MAS3, mas3);
 	mtspr(MAS7, mas7);
-  
+
   mp_flush_tlb();
 }
 
-void mp_set_tlb(uint8_t tlb, 
-	     uint32_t epn, 
+void mp_set_tlb(uint8_t tlb,
+	     uint32_t epn,
 	     uint64_t rpn,
-	     uint8_t perms, 
+	     uint8_t perms,
 	     uint8_t wimge,
-	     uint8_t ts, 
-	     uint8_t esel, 
-	     uint8_t tsize, 
+	     uint8_t ts,
+	     uint8_t esel,
+	     uint8_t tsize,
 	     uint8_t iprot)
 {
   if ((mfspr(SPRN_MMUCFG) & MMUCFG_MAVN) == MMUCFG_MAVN_V1 &&  (tsize & 1)) {
@@ -45,13 +45,13 @@ void mp_set_tlb(uint8_t tlb,
 }
 
 /// @brief Init hardware before jumping to kernel.
-/// @param  
-void mp_init_hw(void) 
+/// @param
+void mp_init_hw(void)
 {
 
   /// amlal:
   /// map VGA framebuffer
-  mp_set_tlb(0, MP_FRAMEBUFFER_ADDR,   /* v_addr, 0x0000A0000 */
+  mp_set_tlb(0, SYS_FRAMEBUFFER_ADDR,   /* v_addr, 0x0000A0000 */
           0x0000A000, /* p_addr. 0x0000A0000  */
           MAS3_SW | MAS3_SR,       /* perm  type=TLB_MAP_IO */
           MAS2_I | MAS2_G,         /* wimge type=TLB_MAP_IO */
@@ -62,7 +62,7 @@ void mp_init_hw(void)
 
   // map ccsrbar and uart.
   // at start we execute from esel = 0, so chose something else..
-  mp_set_tlb(1, MP_UART_BASE,   /* v_addr   0xe0000000 see  qemu-ppce500.h */
+  mp_set_tlb(1, SYS_UART_BASE,   /* v_addr   0xe0000000 see  qemu-ppce500.h */
           0xfe0000000, /* p_addr. 0xfe0000000  */
           MAS3_SW | MAS3_SR,       /* perm  type=TLB_MAP_IO */
           MAS2_I | MAS2_G,         /* wimge type=TLB_MAP_IO */
@@ -73,7 +73,7 @@ void mp_init_hw(void)
 
   /// amlal:
   /// map pci base for kernel
-  mp_set_tlb(0, MP_BASE_ADDRESS,   /* v_addr, 0xFE008000 */
+  mp_set_tlb(0, SYS_BASE_ADDRESS,   /* v_addr, 0xFE008000 */
           0xFE0008000, /* p_addr. 0xfe0000000  */
           MAS3_SW | MAS3_SR,       /* perm  type=TLB_MAP_IO */
           MAS2_I | MAS2_G,         /* wimge type=TLB_MAP_IO */
@@ -84,8 +84,8 @@ void mp_init_hw(void)
 
   mp_pci_init_tree();
 
-  mp_pci_append_tree("@vga-display", MP_FRAMEBUFFER_ADDR, 0x0);
-  mp_pci_append_tree("@pci-express", MP_BASE_ADDRESS, 0x0);
+  mp_pci_append_tree("@vga-display", SYS_FRAMEBUFFER_ADDR, 0x0);
+  mp_pci_append_tree("@pci-express", SYS_BASE_ADDRESS, 0x0);
 }
 
 void mp_flush_tlb(void) { asm volatile("isync;tlbwe;msync;isync"); };

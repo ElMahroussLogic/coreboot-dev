@@ -9,16 +9,16 @@
 
 /// BUGS: 0
 
-#define MP_NS16550_COM1 (MP_UART_BASE + 0x4500)
-#define MP_NS16550_COM2 (MP_UART_BASE + 0x4600)
+#define SYS_NS16550_COM1 (SYS_UART_BASE + 0x4500)
+#define SYS_NS16550_COM2 (SYS_UART_BASE + 0x4600)
 
-volatile ascii_char_t* const UART0DR = (ascii_char_t*)MP_NS16550_COM1;
+volatile ascii_char_t* const UART0DR = (ascii_char_t*)SYS_NS16550_COM1;
 
 /* this file handles the UART */
 
 /// @brief Get character from UART.
-/// @param  
-/// @return 
+/// @param
+/// @return
 utf_char_t mp_get_char(void) {
   while (!(*(((volatile uint8_t*)UART0DR) + 0x05) & 0x01))
     ;
@@ -26,7 +26,7 @@ utf_char_t mp_get_char(void) {
 }
 
 /// @brief Put character into UART.
-/// @param ch 
+/// @param ch
 void mp_put_char(utf_char_t ch) { *UART0DR = (ascii_char_t)(ch); }
 
 /// @brief Put string in UART.

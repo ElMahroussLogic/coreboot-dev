@@ -4,7 +4,7 @@
  #	CoreBoot
  # 	Date Added: 08/11/2023
  # 	Copyright 2024, Mahrouss Logic, all rights reserved.
- # 	
+ #
  # 	========================================================
  #
 
@@ -29,9 +29,10 @@ QEMU_IMG=qemu-img create -f qcow2 cdrom.epm 256M
 # link (make firmware)
 .PHONY: firmware-link
 firmware-link: firmware-compile
+	sleep 1
 	$(LD) $(OBJ) $(FLAGS_LD)
 	$(QEMU_IMG)
-	
+
 # compile firmware
 .PHONY: firmware-compile
 firmware-compile:
