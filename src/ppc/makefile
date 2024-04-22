@@ -4,34 +4,37 @@
  #	CoreBoot
  # 	Date Added: 08/11/2023
  # 	Copyright 2024, Mahrouss Logic, all rights reserved.
- # 	
+ #
  # 	========================================================
  #
 
-CC=powerpc-eabi-gcc
-AS=powerpc-eabi-as
-FIRMWARE=core-boot.elf
+CC=ppc-elf-gcc
+AS=ppc-elf-as
+FIRMWARE=firmware.rom
 FLAGS=-c -mcpu=8540  -D__COMPILE_POWERPC__ -I../../ -Wall -c -nostdlib -ffreestanding -fno-builtin -D__BSTRICT__ -D__BDEBUG__
 C_SRC=$(wildcard *.c) $(wildcard ../*.c) -c
 
 AS_FLAGS= -c  -I../../ -c
 
-LD=powerpc-linux-gnu-ld
+LD=ppc-elf-ld
 OBJ=$ $(wildcard *.o)
-FLAGS_LD= --script=linkscript.ld -o $(FIRMWARE) -nostdlib
+FLAGS_LD= --script=linkscript.ld -o core-boot.elf -nostdlib
 
 EMU=qemu-system-ppc64
-EMU_FLAGS= -drive file=cdrom.epm,media=disk,snapshot=off,format=raw -device virtio-scsi-pci,id=scsi -serial stdio -device VGA -cpu e500 -d guest_errors,unimp -M ppce500 -bios $(FIRMWARE) -s
+EMU_FLAGS= -drive file=cdrom.epm,media=disk,snapshot=off,format=raw -device virtio-scsi-pci,id=scsi -smp 4 -device VGA -cpu e500 -d guest_errors,unimp -M ppce500 -bios $(FIRMWARE) -s
 
+WAIT=sleep 1
 
 QEMU_IMG=qemu-img create -f qcow2 cdrom.epm 256M
 
-# link (make firmware)
 .PHONY: firmware-link
 firmware-link: firmware-compile
+	$(WAIT)
 	$(LD) $(OBJ) $(FLAGS_LD)
 	$(QEMU_IMG)
-	
+	qemu-img create -f raw firmware.rom 512K
+	dd if=core-boot.elf of=firmware.rom bs=1 seek=0 conv=notrunc
+
 # compile firmware
 .PHONY: firmware-compile
 firmware-compile:
@@ -51,7 +54,7 @@ run-dbg:
 # remove object files
 .PHONY: clean
 clean:
-	rm -f $(wildcard *.o) $(wildcard *.out)
+	rm -f $(wildcard *.o) $(wildcard *.elf) $(wildcard *.rom)
 
 .PHONY: all
 all: firmware-link

@@ -4,13 +4,13 @@
  #	CoreBoot
  # 	Date Added: 08/11/2023
  # 	Copyright 2024, Mahrouss Logic, all rights reserved.
- # 	
+ #
  # 	========================================================
  #
 
 CC=riscv64-unknown-elf-gcc
 FIRMWARE=core-boot.elf
-FLAGS=-D__COMPILE_RISCV__ -I../../ -Wall -c -nostdlib -ffreestanding -fno-builtin -D__BSTRICT__ -D__BDEBUG__ -mcmodel=medany
+FLAGS=-D__COMPILE_RISCV__ -I../../ -Wall -c -nostdlib -ffreestanding -fno-builtin -D__BSTRICT__ -D__BDEBUG__ -O0 -mcmodel=medany
 C_SRC= $(wildcard *.s) $(wildcard *.c) $(wildcard ../*.c) -c
 
 CXX=riscv64-unknown-elf-g++
@@ -18,15 +18,15 @@ CXX_SRC= $(wildcard *.cc) $(wildcard ../*.cc) -c
 
 LD=riscv64-unknown-elf-ld
 OBJ=$ $(wildcard *.o)
-FLAGS_LD= --script=linkscript.ld -o $(FIRMWARE)
+FLAGS_LD= --script=linkscript.ld -o core-boot.elf
 
-EMU=qemu-system-riscv64 -m 4G -smp 4 -machine virt -bios $(FIRMWARE) -d int -device VGA -serial stdio
+EMU=qemu-system-riscv64 -m 4G -smp 2 -machine virt -bios $(FIRMWARE) -d int -device VGA
 
 # link (make firmware)
 .PHONY: firmware-link
 firmware-link: firmware-compile
 	$(LD) $(OBJ) $(FLAGS_LD)
-	
+
 # compile firmware
 .PHONY: firmware-compile
 firmware-compile:

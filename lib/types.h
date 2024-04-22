@@ -7,14 +7,13 @@
 #pragma once
 
 ///
-///
+/// @file types.h
 /// @brief CoreBoot types, data structures, and standard library.
-///
 ///
 
 typedef __UINTPTR_TYPE__ uintptr_t;
-
 typedef __UINT32_TYPE__ phys_addr_t;
+
 typedef unsigned long ulong_t;
 
 typedef unsigned long long int uint64_t;
@@ -68,8 +67,8 @@ typedef ptrtype_t size_t;
 #define true yes
 #endif //!_cplusplus
 
-#define MP_RESTART 0
-#define MP_SHUTDOWN 1
+#define SYS_RESTART 0
+#define SYS_SHUTDOWN 1
 
 /// @brief float type.
 typedef union {
@@ -115,23 +114,19 @@ void mp_restart_machine(void);
 void mp_flush_tlb(void);
 
 /// @brief Print current kernel name.
-/// @param  
+/// @param
 void mp_print_kernel_name(void);
 
 /// @brief String length getter
 /// @param str the string.
-/// @return 
+/// @return
 size_t strlen(caddr_t str);
 
 /// @brief Compare two strings.
 /// @param src source string
 /// @param cmp string to compare.
-/// @return 
+/// @return
 size_t strcmp(caddr_t src, caddr_t cmp);
-
-/// @brief printf implementation
-/// @param fmt format of the printf.
-size_t printf(caddr_t fmt, ...);
 
 typedef void (*mp_proc_t)();
 
@@ -140,38 +135,38 @@ typedef char ascii_char_t;
 
 /// @brief Linear Executable Header
 /// @author Amlal El Mahrouss
-struct __attribute__((packed)) mp_boot_header {
+struct __attribute__((aligned(4))) mp_boot_header {
   const ascii_char_t h_mag[2];     // magic number
   const ascii_char_t h_name[10];   // operating system name
-  const int32_t h_revision;        // firmware revision
-  const uintptr_t h_start_address; // start address (master/slave thread)
+  const uint32_t h_revision;        // firmware revision
+  const uint64_t h_start_address; // start address (master/slave thread)
 };
 
 #define __COPYRIGHT(s) /* unused */
 
 #ifdef __COMPILE_RISCV__
-# define MP_BOOT_ADDR (0x8002000)
-# define MP_BOOT_ADDR_STR "0x8002000"
-# define MP_FRAMEBUFFER_ADDR 0x40000000L
+# define SYS_BOOT_ADDR (0x80020000)
+# define SYS_BOOT_ADDR_STR "0x80020000"
+# define SYS_FRAMEBUFFER_ADDR 0x40000000L
 #elif defined(__COMPILE_POWERPC__)
-# define MP_BOOT_ADDR 0x1030000
-# define MP_BOOT_ADDR_STR "0x1030000"
-# define MP_FRAMEBUFFER_ADDR 0x40000000L
+# define SYS_BOOT_ADDR 0x1030000
+# define SYS_BOOT_ADDR_STR "0x1030000"
+# define SYS_FRAMEBUFFER_ADDR 0x40000000L
 #endif // ifndef __COMPILE_POWERPC__
 
-#define MP_UART_BASE 0x10000000
+#define SYS_UART_BASE 0x10000000
 
-#define MP_BAUDRATE_TABLE	\
+#define SYS_BAUDRATE_TABLE	\
 	{300, 600, 1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200}
 
-#define MP_STRING(s) #s
+#define SYS_STRING(s) #s
 
-#define MP_BOOT_MAG_0 'C'
-#define MP_BOOT_MAG_1 'B'
+#define SYS_BOOT_MAG_0 'C'
+#define SYS_BOOT_MAG_1 'B'
 
-#define MP_BOOT_VER 0x101
+#define SYS_BOOT_VER 0x101
 
-#define MP_BOOT_CALL(struct, offset)                                           \
+#define SYS_BOOT_CALL(struct, offset)                                           \
   mp_proc_t proc_##offset = (mp_proc_t)(struct->offset);                       \
   proc_##offset();
 
@@ -179,4 +174,3 @@ struct __attribute__((packed)) mp_boot_header {
 
 
 // EOF.
-

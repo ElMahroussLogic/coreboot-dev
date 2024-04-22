@@ -9,9 +9,11 @@
 
 // include this for documentation.
 
-static const __SIZE_TYPE__ mp_filesystems_count = 5;
-static const caddr_t mp_filesystems[] = { "ffs", "ffs_2", "zfs", "ufs", "NewFS" };
+static const __SIZE_TYPE__ mp_filesystems_count = 1;
+static const caddr_t mp_filesystems[] = { "NewFS" };
 
+/// @brief check if filesystem is supported by CoreBoot.
+/// @param fs the filesystem magic, as provided by EPM.
 boolean mp_filesystem_exists(caddr_t fs)
 {
     if (fs == nil ||

@@ -14,7 +14,7 @@ mp_reset_vector:
 	lis	0,0
 	stw	0,0(1)		/* clear back chain */
 	stwu	1,-64(1)		/* push another stack frame */
-	
+
 	/* Let her rip */
 
 	bl 	mp_init_hw
@@ -25,9 +25,32 @@ mp_reset_vector:
 
 	trap
 
+.global mp_start_rom
+.global mp_start_context
+.global mp_boot_processor_ready
 
-	
+.equ SYS_BOOT_ADDR, 0x1030000
+
+mp_start_rom:
+	lis 3, SYS_BOOT_ADDR@h
+	addi 3, 3, SYS_BOOT_ADDR@l
+
+	blr
+
+mp_start_context:
+	li 4, 0
+	cmp 0, 0, 4, 3
+	blt run_context
+	mr 3, 31
+	blr
+run_context:
+	blr /* r3 is filled here */
+
 .Lstk:
 /*	.long	__stack*/
 	.long	stack_top
 
+.data
+
+mp_boot_processor_ready:
+	.word 0

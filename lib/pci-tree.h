@@ -16,8 +16,8 @@
 #define PCI_INVALID_DATA_U16 ((uint16_t)~0)
 #define PCI_INVALID_DATA_U32 ((uint32_t)~0)
 
-#define MP_BASE_ADDRESS (0x20008000) /* PCI base mapped in virtual memory. */
-#define MP_PCI_TREE_BASE (0x802000) /* The PCI tree base address. */
+#define SYS_BASE_ADDRESS (0x20008000) /* PCI base mapped in virtual memory. */
+#define SYS_PCI_TREE_BASE (0x802000) /* The PCI tree base address. */
 
 #define PCI_CONFIG_SPACE (4096U)
 
@@ -57,7 +57,7 @@ struct hw_mp_pci_tree {
 };
 
 /// @brief Mandatory init function for PCI tree.
-/// @param void 
+/// @param void
 /// @return if it's successful or not.
 boolean mp_pci_init_tree(void);
 
