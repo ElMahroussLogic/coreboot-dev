@@ -18,7 +18,7 @@ AS_FLAGS= -c  -I../../ -c
 
 LD=ppc-elf-ld
 OBJ=$ $(wildcard *.o)
-FLAGS_LD= --script=linkscript.ld -o $(FIRMWARE) -nostdlib
+FLAGS_LD= --script=linkscript.ld -o core-boot.elf -nostdlib
 
 EMU=qemu-system-ppc64
 EMU_FLAGS= -drive file=cdrom.epm,media=disk,snapshot=off,format=raw -device virtio-scsi-pci,id=scsi -smp 4 -device VGA -cpu e500 -d guest_errors,unimp -M ppce500 -bios $(FIRMWARE) -s

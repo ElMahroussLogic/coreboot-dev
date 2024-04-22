@@ -5,7 +5,7 @@
 # ===============================
 
 ASM				= nasm
-Kernel				= romboot.rom
+ROM				= romboot.rom
 ROM_SOURCE		= romboot.asm
 BOOT_TEST_SOURCE = testboot-xpt.asm
 BOOT_TEST		= testboot-xpt.rom
@@ -18,7 +18,7 @@ all: compile-xpm-test compile-rom compile-xpm-rom
 
 .PHONY: clean-output
 clean-output:
-	rm $(Kernel) $(BOOT) $(BOOT_TEST)
+	rm $(ROM) $(BOOT) $(BOOT_TEST)
 
 .PHONY: compile-xpm-test
 compile-xpm-test:
@@ -26,8 +26,7 @@ compile-xpm-test:
 
 .PHONY: compile-rom
 compile-rom:
-	$(ASM) -f bin $(ROM_SOURCE) -o $(Kernel)
-
+	$(ASM) -f bin $(ROM_SOURCE) -o $(ROM)
 
 .PHONY: compile-xpm-rom
 compile-xpm-rom:
@@ -36,3 +35,7 @@ compile-xpm-rom:
 .PHONY: run-test-xpm
 run-test-xpm:
 	$(EMU) -M q35 -fda $(BOOT) -hda $(BOOT_TEST) -d int
+
+.PHONY: run-rom
+run-rom:
+	$(EMU) -M q35 -bios $(ROM) -d cpu_reset

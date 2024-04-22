@@ -4,7 +4,7 @@
  #	CoreBoot
  # 	Date Added: 08/11/2023
  # 	Copyright 2024, Mahrouss Logic, all rights reserved.
- # 	
+ #
  # 	========================================================
  #
 
@@ -18,7 +18,7 @@ CXX_SRC= $(wildcard *.cc) $(wildcard ../*.cc) -c
 
 LD=riscv64-unknown-elf-ld
 OBJ=$ $(wildcard *.o)
-FLAGS_LD= --script=linkscript.ld -o $(FIRMWARE)
+FLAGS_LD= --script=linkscript.ld -o core-boot.elf
 
 EMU=qemu-system-riscv64 -m 4G -smp 2 -machine virt -bios $(FIRMWARE) -d int -device VGA
 
@@ -26,7 +26,7 @@ EMU=qemu-system-riscv64 -m 4G -smp 2 -machine virt -bios $(FIRMWARE) -d int -dev
 .PHONY: firmware-link
 firmware-link: firmware-compile
 	$(LD) $(OBJ) $(FLAGS_LD)
-	
+
 # compile firmware
 .PHONY: firmware-compile
 firmware-compile:

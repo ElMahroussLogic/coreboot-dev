@@ -49,7 +49,11 @@ void mp_start_exec(void) {
     mp_put_string("\r\r\n");
 
 #ifdef __COMPILE_POWERPC__
-    mp_put_string(">> CPU: NeWS PowerPC Machine.\r\r\n");
+    mp_put_string(">> CPU: NeWS Harvard Machine.\r\r\n");
+#endif  // __COMPILE_POWERPC__
+
+#ifdef __COMPILE_AMD64__
+    mp_put_string(">> CPU: NeWS BroadBand Machine.\r\r\n");
 #endif  // __COMPILE_POWERPC__
 
 #ifdef __COMPILE_RISCV__
