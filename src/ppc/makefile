@@ -10,7 +10,7 @@
 
 CC=ppc-elf-gcc
 AS=ppc-elf-as
-FIRMWARE=core-boot.elf
+FIRMWARE=firmware.rom
 FLAGS=-c -mcpu=8540  -D__COMPILE_POWERPC__ -I../../ -Wall -c -nostdlib -ffreestanding -fno-builtin -D__BSTRICT__ -D__BDEBUG__
 C_SRC=$(wildcard *.c) $(wildcard ../*.c) -c
 
@@ -32,6 +32,8 @@ firmware-link: firmware-compile
 	$(WAIT)
 	$(LD) $(OBJ) $(FLAGS_LD)
 	$(QEMU_IMG)
+	qemu-img create -f raw firmware.rom 512K
+	dd if=core-boot.elf of=firmware.rom bs=1 seek=0 conv=notrunc
 
 # compile firmware
 .PHONY: firmware-compile
@@ -52,7 +54,7 @@ run-dbg:
 # remove object files
 .PHONY: clean
 clean:
-	rm -f $(wildcard *.o) $(wildcard *.out)
+	rm -f $(wildcard *.o) $(wildcard *.elf) $(wildcard *.rom)
 
 .PHONY: all
 all: firmware-link
