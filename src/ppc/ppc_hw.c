@@ -12,7 +12,7 @@
 
 void mp_write_tlb(uint32_t mas0, uint32_t mas1, uint32_t mas2, uint32_t mas3, uint32_t mas7)
 {
-       	mtspr(MAS0, mas0);
+    mtspr(MAS0, mas0);
 	mtspr(MAS1, mas1);
 	mtspr(MAS2, mas2);
 	mtspr(MAS3, mas3);
