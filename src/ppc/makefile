@@ -13,7 +13,7 @@ AS=ppc-elf-as
 
 FIRMWARE=firmware.rom
 
-FLAGS=-c -mcpu=8540  -D__COMPILE_POWERPC__ -I../../ -Wall -c -nostdlib -ffreestanding -fno-builtin -D__BSTRICT__ -D__BDEBUG__
+FLAGS=-c -mcpu=e5500  -D__COMPILE_POWERPC__ -I../../ -Wall -c -nostdlib -ffreestanding -fno-builtin -D__BSTRICT__ -D__BDEBUG__
 C_SRC=$(wildcard *.c) $(wildcard ../*.c) -c
 
 AS_FLAGS= -c  -I../../ -c
@@ -23,7 +23,7 @@ OBJ=*.o
 FLAGS_LD= --script=linkscript.ld -o core-boot.elf -nostdlib
 
 EMU=qemu-system-ppc64
-EMU_FLAGS= -drive file=cdrom.epm,media=disk,snapshot=off,format=raw -device virtio-scsi-pci,id=scsi -smp 4 -device VGA -cpu e500 -d guest_errors,unimp -M ppce500 -bios $(FIRMWARE) -s
+EMU_FLAGS= -drive file=cdrom.epm,media=disk,snapshot=off,format=raw -device virtio-scsi-pci,id=scsi -smp 4 -device VGA -cpu e5500 -d guest_errors,unimp -M ppce500 -bios $(FIRMWARE) -s
 
 WAIT=sleep 1
 
