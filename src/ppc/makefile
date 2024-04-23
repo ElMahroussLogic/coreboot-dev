@@ -10,14 +10,16 @@
 
 CC=ppc-elf-gcc
 AS=ppc-elf-as
+
 FIRMWARE=firmware.rom
+
 FLAGS=-c -mcpu=8540  -D__COMPILE_POWERPC__ -I../../ -Wall -c -nostdlib -ffreestanding -fno-builtin -D__BSTRICT__ -D__BDEBUG__
 C_SRC=$(wildcard *.c) $(wildcard ../*.c) -c
 
 AS_FLAGS= -c  -I../../ -c
 
 LD=ppc-elf-ld
-OBJ=$ $(wildcard *.o)
+OBJ=*.o
 FLAGS_LD= --script=linkscript.ld -o core-boot.elf -nostdlib
 
 EMU=qemu-system-ppc64
@@ -25,13 +27,16 @@ EMU_FLAGS= -drive file=cdrom.epm,media=disk,snapshot=off,format=raw -device virt
 
 WAIT=sleep 1
 
-QEMU_IMG=qemu-img create -f qcow2 cdrom.epm 256M
+IMG_CMD=qemu-img create -f qcow2 cdrom.epm 256M
+
+.PHONY: all
+all: firmware-link
+	@echo "[CoreBoot] Done."
 
 .PHONY: firmware-link
 firmware-link: firmware-compile
-	$(WAIT)
 	$(LD) $(OBJ) $(FLAGS_LD)
-	$(QEMU_IMG)
+	$(IMG_CMD)
 	qemu-img create -f raw firmware.rom 512K
 	dd if=core-boot.elf of=firmware.rom bs=1 seek=0 conv=notrunc
 
@@ -54,8 +59,4 @@ run-dbg:
 # remove object files
 .PHONY: clean
 clean:
-	rm -f $(wildcard *.o) $(wildcard *.elf) $(wildcard *.rom)
-
-.PHONY: all
-all: firmware-link
-	@echo "[CoreBoot] done."
+	rm -f $(wildcard *.o) $(wildcard *.elf) $(wildcard *.rom) $(wildcard *.epm)

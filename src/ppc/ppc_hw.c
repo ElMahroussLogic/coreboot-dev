@@ -84,8 +84,10 @@ void mp_init_hw(void)
 
   mp_pci_init_tree();
 
-  mp_pci_append_tree("@vga-display", SYS_FRAMEBUFFER_ADDR, 0x0);
-  mp_pci_append_tree("@pci-express", SYS_BASE_ADDRESS, 0x0);
+  mp_pci_append_tree("@fb", SYS_FRAMEBUFFER_ADDR, 0x0);
+  mp_pci_append_tree("@mbci", 0, 0x0);
+  mp_pci_append_tree("@serial", SYS_UART_BASE, 0);
+  mp_pci_append_tree("@pci", SYS_BASE_ADDRESS, 0x0);
 }
 
 void mp_flush_tlb(void) { asm volatile("isync;tlbwe;msync;isync"); };

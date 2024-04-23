@@ -17,10 +17,14 @@ CXX=riscv64-unknown-elf-g++
 CXX_SRC= $(wildcard *.cc) $(wildcard ../*.cc) -c
 
 LD=riscv64-unknown-elf-ld
-OBJ=$ $(wildcard *.o)
+OBJ=*.o
 FLAGS_LD= --script=linkscript.ld -o core-boot.elf
 
 EMU=qemu-system-riscv64 -m 4G -smp 2 -machine virt -bios $(FIRMWARE) -d int -device VGA
+
+.PHONY: all
+all: firmware-link
+	@echo "[CoreBoot] Done."
 
 # link (make firmware)
 .PHONY: firmware-link
@@ -46,8 +50,4 @@ run-dbg:
 # remove object files
 .PHONY: clean
 clean:
-	rm -f $(wildcard *.o) $(wildcard *.out)
-
-.PHONY: all
-all: firmware-link
-	@echo "[CoreBoot] done."
+	rm -f $(wildcard *.o) $(wildcard *.elf) $(wildcard *.rom) $(wildcard *.epm)
