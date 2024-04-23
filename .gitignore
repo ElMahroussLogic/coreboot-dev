@@ -1,6 +1,9 @@
 *.rom
 *.epm
 
+html/
+latex/
+
 .cmake/
 .qtc_clangd/
 CMakeCache.txt
