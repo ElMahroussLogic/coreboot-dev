@@ -1,6 +1,8 @@
 *.rom
 *.epm
 
+.vscode
+
 html/
 latex/
 
