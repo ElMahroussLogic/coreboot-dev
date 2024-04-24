@@ -24,7 +24,7 @@ typedef unsigned char uint8_t;
 #ifdef __unix__
 #undef __unix__
 #define __unix__ 7
-#endif // !__unix__
+#endif  // !__unix__
 
 #define __mpboot__ __unix__
 
@@ -47,11 +47,11 @@ typedef ptrtype_t size_t;
 
 #ifndef nil
 #define nil ((voidptr_t)0)
-#endif // ifndef nil
+#endif  // ifndef nil
 
 #ifndef null
 #define null ((voidptr_t)0)
-#endif // ifndef null
+#endif  // ifndef null
 
 #define __no 0
 #define __yes 1
@@ -65,20 +65,55 @@ typedef ptrtype_t size_t;
 #define bool boolean
 #define false no
 #define true yes
-#endif //!_cplusplus
+#endif  //!_cplusplus
 
 #define SYS_RESTART 0
 #define SYS_SHUTDOWN 1
 
+#define __COPYRIGHT(s) /* unused */
+
+#ifdef __COMPILE_RISCV__
+# define SYS_BOOT_ADDR (0x80020000)
+# define SYS_BOOT_ADDR_STR "0x80020000"
+# define SYS_FRAMEBUFFER_ADDR 0x40000000L
+#elif defined(__COMPILE_POWERPC__)
+# define SYS_BOOT_ADDR 0x1030000
+# define SYS_BOOT_ADDR_STR "0x1030000"
+# define SYS_FRAMEBUFFER_ADDR 0x40000000L
+#else
+# define SYS_BOOT_ADDR 0x1030000
+# define SYS_BOOT_ADDR_STR "0x1030000"
+# define SYS_FRAMEBUFFER_ADDR 0x40000000L
+#endif // ifndef __COMPILE_POWERPC__
+
+#define SYS_UART_BASE 0x10000000
+
+#define SYS_BAUDRATE_TABLE	\
+	{300, 600, 1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200}
+
+#define SYS_STRING(s) #s
+
+#define SYS_BOOT_MAG_0 'C'
+#define SYS_BOOT_MAG_1 'B'
+
+#define SYS_BOOT_VER 0x101
+
+#define SYS_BOOT_CALL(struct, offset)                                           \
+  mp_proc_t proc_##offset = (mp_proc_t)(struct->offset);                       \
+  proc_##offset();
+
+
+
+
 /// @brief float type.
 typedef union {
-	struct {
-		char sign;
-		int mantissa;
-		short exponent;
-	};
+  struct {
+    char sign;
+    int mantissa;
+    short exponent;
+  };
 
-	float f;
+  float f;
 } float_t;
 
 /// \brief UTF-32 character
@@ -138,43 +173,12 @@ typedef char ascii_char_t;
 struct __attribute__((aligned(4))) mp_boot_header {
   const ascii_char_t h_mag[2];     // magic number
   const ascii_char_t h_name[10];   // operating system name
-  const uint32_t h_revision;        // firmware revision
-  const uint64_t h_start_address; // start address (master/slave thread)
+  const uint32_t h_revision;       // firmware revision
+  const uint64_t h_start_address;  // start address (master/slave thread)
 };
 
-#define __COPYRIGHT(s) /* unused */
-
-#ifdef __COMPILE_RISCV__
-# define SYS_BOOT_ADDR (0x80020000)
-# define SYS_BOOT_ADDR_STR "0x80020000"
-# define SYS_FRAMEBUFFER_ADDR 0x40000000L
-#elif defined(__COMPILE_POWERPC__)
-# define SYS_BOOT_ADDR 0x1030000
-# define SYS_BOOT_ADDR_STR "0x1030000"
-# define SYS_FRAMEBUFFER_ADDR 0x40000000L
-#else
-# define SYS_BOOT_ADDR 0x1030000
-# define SYS_BOOT_ADDR_STR "0x1030000"
-# define SYS_FRAMEBUFFER_ADDR 0x40000000L
-#endif // ifndef __COMPILE_POWERPC__
-
-#define SYS_UART_BASE 0x10000000
-
-#define SYS_BAUDRATE_TABLE	\
-	{300, 600, 1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200}
-
-#define SYS_STRING(s) #s
-
-#define SYS_BOOT_MAG_0 'C'
-#define SYS_BOOT_MAG_1 'B'
-
-#define SYS_BOOT_VER 0x101
-
-#define SYS_BOOT_CALL(struct, offset)                                           \
-  mp_proc_t proc_##offset = (mp_proc_t)(struct->offset);                       \
-  proc_##offset();
-
-
-
+/// @brief Check if filesystem exists.
+/// @param fs Filesystem identifier.
+boolean mp_filesystem_exists(caddr_t fs);
 
 // EOF.

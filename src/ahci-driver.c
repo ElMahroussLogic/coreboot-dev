@@ -16,7 +16,7 @@
  */
 
 #include <lib/pci-tree.h>
-#include <lib/types.h>
+#include <lib/boot.h>
 
 #define SYS_AHCI_DRIVER_NAME    ("@ahci")
 

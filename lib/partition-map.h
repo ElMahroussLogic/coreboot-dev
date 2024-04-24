@@ -7,7 +7,7 @@
 #ifndef __PARTITION_MAP_H__
 #define __PARTITION_MAP_H__
 
-#include <lib/types.h>
+#include <lib/boot.h>
 
 /// @brief EPM GUID block.
 typedef struct boot_guid {
@@ -66,7 +66,7 @@ typedef struct boot_block boot_block_t;
 /* @brief 32x0 magic for EPM */
 #define EPM_MAGIC_32x0 "EPM32"
 
-/* @brief PowerPC magic for EPM */
+/* @brief POWER magic for EPM */
 #define EPM_MAGIC_PPC "EPMPC"
 
 #define EPM_MAX_BLKS 128
@@ -74,9 +74,8 @@ typedef struct boot_block boot_block_t;
 #define EPM_BOOT_BLK_SZ sizeof(struct boot_block)
 #define EPM_PART_BLK_SZ sizeof(struct part_block)
 
-//! version types.
-//! use in boot block version field.
-
+///! @brief version enum.
+///! use it in the boot block version field.
 enum {
   EPM_MPUX = 0xcf,
   EPM_LINUX = 0x8f,
@@ -93,7 +92,5 @@ enum {
 #define EPM_REVISION 2
 
 /// END SPECS
-
-boolean mp_filesystem_exists(caddr_t fs);
 
 #endif  // ifndef __PARTITION_MAP_H__

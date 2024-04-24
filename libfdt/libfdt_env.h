@@ -7,7 +7,7 @@
 #ifndef __SYS_FDT_H__
 #define __SYS_FDT_H__
 
-#include <lib/types.h>
+#include <lib/boot.h>
 
 #ifdef __USE_SPARSE__
 #define FDT_FORCE __attribute__((force))
@@ -30,27 +30,27 @@ typedef uint64_t FDT_BITWISE fdt64_t;
 			 (EXTRACT_BYTE(x, 4) << 24) | (EXTRACT_BYTE(x, 5) << 16) | \
 			 (EXTRACT_BYTE(x, 6) << 8) | EXTRACT_BYTE(x, 7))
 
-static inline uint16_t fdt16_to_cpu(fdt16_t x) 
+static inline uint16_t fdt16_to_cpu(fdt16_t x)
 {
 	return (FDT_FORCE uint16_t)CPU_TO_FDT16(x);
 }
 
-static inline fdt16_t cpu_to_fdt16(uint16_t x) 
+static inline fdt16_t cpu_to_fdt16(uint16_t x)
 {
 	return (FDT_FORCE fdt16_t)CPU_TO_FDT16(x);
 }
 
-static inline uint32_t fdt32_to_cpu(fdt32_t x) 
+static inline uint32_t fdt32_to_cpu(fdt32_t x)
 {
 	return (FDT_FORCE uint32_t)CPU_TO_FDT32(x);
 }
 
-static inline fdt32_t cpu_to_fdt32(uint32_t x) 
+static inline fdt32_t cpu_to_fdt32(uint32_t x)
 {
 	return (FDT_FORCE fdt32_t)CPU_TO_FDT32(x);
 }
 
-static inline uint64_t fdt64_to_cpu(fdt64_t x) 
+static inline uint64_t fdt64_to_cpu(fdt64_t x)
 {
 	return (FDT_FORCE uint64_t)CPU_TO_FDT64(x);
 }

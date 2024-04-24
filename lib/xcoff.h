@@ -14,7 +14,7 @@
 #ifndef __XCOFF__
 #define __XCOFF__
 
-#include <lib/types.h>
+#include <lib/boot.h>
 
 #define XCOFF_MAG       0x01F7
 

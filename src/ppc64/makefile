@@ -16,7 +16,7 @@ FIRMWARE=firmware.rom
 FLAGS=-c -mcpu=e5500  -D__COMPILE_POWERPC__ -I../../ -Wall -c -nostdlib -ffreestanding -fno-builtin -D__BSTRICT__ -D__BDEBUG__
 C_SRC=$(wildcard *.c) $(wildcard ../*.c) -c
 
-AS_FLAGS= -c  -I../../ -c
+AS_FLAGS= -c -I../../
 
 LD=ppc-elf-ld
 OBJ=*.o
