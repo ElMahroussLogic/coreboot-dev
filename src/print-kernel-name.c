@@ -4,7 +4,7 @@
 
 ------------------------------------------- */
 
-#include <lib/types.h>
+#include <lib/boot.h>
 
 /// @brief print the firmware name.
 void mp_print_kernel_name(void) {

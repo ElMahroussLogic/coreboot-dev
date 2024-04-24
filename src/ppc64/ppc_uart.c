@@ -5,7 +5,7 @@
 ------------------------------------------- */
 
 #include <lib/string.h>
-#include <lib/types.h>
+#include <lib/boot.h>
 
 /// BUGS: 0
 

@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <lib/types.h>
+#include <lib/boot.h>
 
 struct _mp_file_descriptor;
 

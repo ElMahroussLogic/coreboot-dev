@@ -10,7 +10,7 @@
 /// @brief PCI Tree layout.
 /// @author Amlal El Mahrouss
 
-#include <lib/types.h>
+#include <lib/boot.h>
 
 #define PCI_INVALID_DATA_U8 ((uint8_t)~0)
 #define PCI_INVALID_DATA_U16 ((uint16_t)~0)
@@ -56,7 +56,7 @@ struct hw_mp_pci_tree {
   mp_pci_char_t d_name[SYS_PCI_NAME_LEN];
 };
 
-/// @brief Mandatory init function for PCI tree.
+/// @brief Init PCI tree.
 /// @param void
 /// @return if it's successful or not.
 boolean mp_pci_init_tree(void);
@@ -68,5 +68,3 @@ boolean mp_pci_init_tree(void);
 /// @return if it was successful or not.
 boolean mp_pci_append_tree(const caddr_t name, mp_pci_num_t struct_ptr,
                         mp_pci_num_t struct_sz);
-
-/// TODO: Tree traversal -> mp_pci_find_tree(const caddr_t name)

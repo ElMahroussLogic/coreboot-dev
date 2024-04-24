@@ -7,7 +7,7 @@
 #include <lib/mp-bit.h>
 #include <lib/partition-map.h>
 #include <lib/pci-tree.h>
-#include <lib/types.h>
+#include <lib/boot.h>
 
 /// BUGS: 0
 

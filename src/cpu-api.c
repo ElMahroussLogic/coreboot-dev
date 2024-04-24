@@ -4,7 +4,7 @@
 
 ------------------------------------------- */
 
-#include <lib/types.h>
+#include <lib/boot.h>
 
 /// @brief Restarts the computer.
 /// @param none.

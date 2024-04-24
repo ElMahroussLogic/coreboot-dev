@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <lib/types.h>
+#include <lib/boot.h>
 
 #define strncpy(DST, SRC, LEN) memncpy(DST, SRC, LEN)
 

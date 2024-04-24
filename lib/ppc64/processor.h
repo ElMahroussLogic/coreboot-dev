@@ -1,7 +1,7 @@
 #ifndef __ASM_PPC_PROCESSOR_H
 #define __ASM_PPC_PROCESSOR_H
 
-/// ! @note The NeWS cpu is based on the e500 with 64-bit extensions, much like the 970.
+/// ! @note The NeWS SoC is based on the e5500 core.
 
 /*
  * Default implementation of macro that returns current
@@ -17,7 +17,7 @@ struct pt_regs {
 	unsigned long  nip;
 };
 
-#else 
+#else
 #include <asm/ptrace.h>
 #include <asm/types.h>
 #endif
@@ -1209,7 +1209,7 @@ n:
 
 #ifndef __ASSEMBLY__
 
-#include <lib/types.h>
+#include <lib/boot.h>
 
 struct cpu_type {
 	char name[15];

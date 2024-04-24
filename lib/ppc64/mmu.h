@@ -6,7 +6,7 @@
 #define _PPC_MMU_H_
 
 #ifndef __ASSEMBLY__
-#include <lib/types.h>
+#include <lib/boot.h>
 
 /* Hardware Page Table Entry */
 typedef struct _PTE {
