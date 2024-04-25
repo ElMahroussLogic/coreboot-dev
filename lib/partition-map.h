@@ -25,7 +25,7 @@ typedef struct boot_guid {
  */
 struct __attribute__((packed)) boot_block {
   ascii_char_t magic[4];
-  char name[32];
+  ascii_char_t name[32];
   boot_guid_t uuid;
   int version;
   long long int num_blocks;
@@ -38,7 +38,7 @@ struct __attribute__((packed)) boot_block {
  * used to explain a partition inside a media.
  */
 struct __attribute__((packed)) part_block {
-  char name[32];
+  ascii_char_t name[32];
   int version;
   long long int lba_end;
   long long int sector_sz;
@@ -69,12 +69,15 @@ typedef struct boot_block boot_block_t;
 /* @brief POWER magic for EPM */
 #define EPM_MAGIC_PPC "EPMPC"
 
-#define EPM_MAX_BLKS 128
+/* @brief UEFI magic for EPM */
+#define EPM_MAGIC_UEFI "EPMUE"
+
+#define EPM_MAX_BLKS 128 /* 1 on UEFI EPM. */
 
 #define EPM_BOOT_BLK_SZ sizeof(struct boot_block)
 #define EPM_PART_BLK_SZ sizeof(struct part_block)
 
-///! @brief version enum.
+///! @brief variant enum.
 ///! use it in the boot block version field.
 enum {
   EPM_MPUX = 0xcf,
@@ -86,10 +89,13 @@ enum {
 /// @brief Start of EPM headers.
 /// @note There could be anything before this LBA.
 /// Such as PC specific structures.
-#define EPM_PART_BLK_START 0
+#define EPM_PART_BLK_START      (0)
 
 /// @brief EPM revision (2)
-#define EPM_REVISION 2
+#define EPM_REVISION            (2U)
+
+/// @brief EPM revision for UEFI (16)
+#define EPM_REVISION_UEFI       (0xF)
 
 /// END SPECS
 
