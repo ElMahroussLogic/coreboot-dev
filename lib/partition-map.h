@@ -11,10 +11,10 @@
 
 /// @brief EPM GUID block.
 typedef struct boot_guid {
-  unsigned data1;
-  unsigned short data2;
-  unsigned short data3;
-  unsigned char data4[8];
+  uint32_t data1;
+  uint16_t data2;
+  uint16_t data3;
+  uint8_t data4[8];
 } boot_guid_t;
 
 /* The first 0 > 128 addresses of a disk contains these headers. */
@@ -27,10 +27,10 @@ struct __attribute__((packed)) boot_block {
   ascii_char_t magic[4];
   ascii_char_t name[32];
   boot_guid_t uuid;
-  int version;
-  long long int num_blocks;
-  long long int sector_sz;
-  long long int lba_start;
+  int32_t version;
+  int64_t num_blocks;
+  int64_t sector_sz;
+  int64_t lba_start;
 };
 
 /**
@@ -39,13 +39,13 @@ struct __attribute__((packed)) boot_block {
  */
 struct __attribute__((packed)) part_block {
   ascii_char_t name[32];
-  int version;
-  long long int lba_end;
-  long long int sector_sz;
-  long long int lba_start;
-  short type;
-  int fs_version;
-  char fs[16]; /* ffs_2 */
+  int32_t version;
+  int64_t lba_end;
+  int64_t sector_sz;
+  int64_t lba_start;
+  int16_t type;
+  int32_t fs_version;
+  ascii_char_t fs[16]; /* ffs_2 */
 };
 
 typedef struct part_block part_block_t;
