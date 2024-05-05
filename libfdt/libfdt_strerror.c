@@ -14,11 +14,13 @@
 /// @brief Error information structure.
 struct fdt_err
 {
-    const char* e_str;
+	const char* e_str;
 };
 
 #define fdt_error(VAL) \
-	[(VAL)] = { .e_str = #VAL, }
+	[(VAL)] = {        \
+		.e_str = #VAL, \
+	}
 
 static struct fdt_err mp_fdtErrTbl[] = {
 	fdt_error(FDT_ERR_NOTFOUND),
@@ -47,27 +49,27 @@ static struct fdt_err mp_fdtErrTbl[] = {
 #define fdt_error_length() mpux_array_size(mp_fdtErrTbl)
 
 /// @brief Returns the error value as a string.
-/// @param errval 
-/// @return 
+/// @param errval
+/// @return
 const char* fdt_strerror(int32_t errval)
 {
-    if (errval > 0)
-    {
+	if (errval > 0)
+	{
 		return ("<valid offset/length>");
 	}
-    else if (errval == 0)
+	else if (errval == 0)
 	{
-        return ("<no error>");
+		return ("<no error>");
 	}
-    else if (-errval < fdt_error_length())
-    {
-        const char* serr = mp_fdtErrTbl[errval].e_str;
+	else if (-errval < fdt_error_length())
+	{
+		const char* serr = mp_fdtErrTbl[errval].e_str;
 
-        if (serr != null) 
+		if (serr != null)
 		{
 			return serr;
 		}
-    }
+	}
 
-    return ("<unknown error>");
+	return ("<unknown error>");
 }

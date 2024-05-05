@@ -16,22 +16,23 @@
 
 #include <lib/boot.h>
 
-#define XCOFF_MAG       0x01F7
+#define XCOFF_MAG 0x01F7
 
-#define XCOFF_REL_FLG   0x0001
-#define XCOFF_EXEC_FLG  0x0002
-#define XCOFF_LNNO_FLG  0x0004
+#define XCOFF_REL_FLG	0x0001
+#define XCOFF_EXEC_FLG	0x0002
+#define XCOFF_LNNO_FLG	0x0004
 #define XCOFF_SYMNS_FLG 0x0008
 
 /// @brief XCoff identification header.
-typedef struct _xcoff_header {
-  uint16_t magic;
-  uint16_t target;
-  uint16_t num_secs;
-  uint32_t timestamp;
-  uint64_t symptr;
-  uint32_t numsyms;
-  uint16_t opthdr;  // ?: Number of bytes in optional header
+typedef struct _xcoff_header
+{
+	uint16_t magic;
+	uint16_t target;
+	uint16_t num_secs;
+	uint32_t timestamp;
+	uint64_t symptr;
+	uint32_t numsyms;
+	uint16_t opthdr; // ?: Number of bytes in optional header
 } xcoff_header_t;
 
-#endif  // ifndef __XCOFF__
+#endif // ifndef __XCOFF__

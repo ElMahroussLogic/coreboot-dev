@@ -8,11 +8,15 @@
 
 /// @brief Restarts the computer.
 /// @param none.
-void mp_restart_machine(void) {
+void mp_restart_machine(void)
+{
 #ifdef __COMPILE_RISCV__
-   volatile uint32_t* boardPower = (volatile uint32_t*)0x100000;
-  *boardPower = 0x7777;
+	volatile uint32_t* boardPower = (volatile uint32_t*)0x100000;
+	*boardPower					  = 0x7777;
 
-  while (1) { asm volatile ("wfi"); }
+	while (1)
+	{
+		asm volatile("wfi");
+	}
 #endif
 }

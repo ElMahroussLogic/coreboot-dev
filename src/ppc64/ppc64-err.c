@@ -10,14 +10,14 @@
 
 /// @brief Goes into a panic state.
 /// @param reason why?
-void mp_panic(const char *reason)
+void mp_panic(const char* reason)
 {
-    mp_put_string("KERNEL_PANIC: ");
-    mp_put_string(reason);
-    mp_put_char('\n');
+	mp_put_string("Error: ");
+	mp_put_string(reason);
+	mp_put_char('\n');
 
-    while (yes)
-    {
-        (void)0;
-    }
+	while (yes)
+	{
+		(void)0;
+	}
 }
