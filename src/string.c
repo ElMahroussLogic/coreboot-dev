@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-    Copyright Mahrouss Logic
+    Copyright SoftwareLabs
 
 ------------------------------------------- */
 
@@ -11,7 +11,7 @@
  * @version 0.1
  * @date 2024-01-16
  * 
- * @copyright Copyright (c) 2024 Mahrouss Logic Corporation
+ * @copyright Copyright (c) 2024 SoftwareLabs Corporation
  * 
  */
 

@@ -1,7 +1,7 @@
 [
   {
     "Machine": "NeWS R100",
-    "Vendor": "Mahrouss-Logic",
+    "Vendor": "SoftwareLabs",
     "Framebuffer": "0x40000000",
     "Bootloader": "0x80070000",
     "PCI": "0x802000"

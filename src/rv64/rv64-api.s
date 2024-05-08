@@ -1,7 +1,7 @@
 # ====================================
 #
-#   Mahrouss Logic CoreBoot
-#   (C) Mahrouss Logic all rights reserved.
+#   SoftwareLabs CoreBoot
+#   (C) SoftwareLabs all rights reserved.
 #
 #   Purpose: Assembler API for RISC-V
 #

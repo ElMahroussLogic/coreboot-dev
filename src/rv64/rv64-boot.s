@@ -2,7 +2,7 @@
  *	========================================================
  *
  *	CoreBoot
- * 	Copyright 2024, Mahrouss Logic, all rights reserved.
+ * 	Copyright 2024, SoftwareLabs, all rights reserved.
  *
  *  	Purpose: Startup code for RISC-V.
  *

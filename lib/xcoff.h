@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-    Copyright Mahrouss Logic
+    Copyright SoftwareLabs
 
     File: xcoff.h
     Purpose: XCOFF for CoreBoot.
