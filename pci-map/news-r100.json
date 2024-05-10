@@ -2,8 +2,9 @@
   {
     "Machine": "NeWS R100",
     "Vendor": "SoftwareLabs",
-    "Framebuffer": "0x40000000",
-    "Bootloader": "0x80070000",
-    "PCI": "0x802000"
+    "FrameBuffer": "0x40000000",
+    "BootLoader": "0x80070000",
+    "PCITree": "0x8002000",
+    "ROM": "0x0001000"
   }
 ]

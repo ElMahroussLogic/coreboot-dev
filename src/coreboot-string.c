@@ -5,7 +5,7 @@
 ------------------------------------------- */
 
 /**
- * @file string.c
+ * @file coreboot-string.c
  * @author Amlal El Mahrouss (you@domain.com)
  * @brief string library.
  * @version 0.1

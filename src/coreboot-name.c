@@ -6,8 +6,9 @@
 
 #include <lib/boot.h>
 
-/// @brief print the firmware name.
-void mp_print_kernel_name(void)
+/// @brief Print firmware name.
+/// @param
+void mp_print_name(void)
 {
 #ifdef __COMPILE_POWERPC__
 	mp_put_string(">> CoreBoot for POWER.\r\n");

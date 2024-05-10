@@ -93,13 +93,13 @@ enum
 /// @brief Start of EPM headers.
 /// @note There could be anything before this LBA.
 /// Such as PC specific structures.
-#define EPM_PART_BLK_START  (0)
+#define EPM_PART_BLK_START (0)
 
 /// @brief EPM revision (actually at version 2)
-#define EPM_REVISION        (2U)
+#define EPM_REVISION (2U)
 
 /// @brief EPM revision for UEFI (16)
-#define EPM_REVISION_UEFI   (0xF)
+#define EPM_REVISION_UEFI (0xF)
 
 /// END SPECS
 

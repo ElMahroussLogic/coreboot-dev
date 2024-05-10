@@ -5,7 +5,7 @@
 ------------------------------------------- */
 
 /**
- * @file drive-backend-ppc.cc
+ * @file coreboot-ahci-driver.cc
  * @author Amlal El Mahrouss (amlal@el-mahrouss-logic.com)
  * @brief PowerPC Disk support, via AHCI.
  * @version 0.2

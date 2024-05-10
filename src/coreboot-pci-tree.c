@@ -5,9 +5,9 @@
 ------------------------------------------- */
 
 /**
- * @file pci-tree.c
+ * @file coreboot-pci-tree.c
  * @author Amlal El Mahrouss (amlal@el-mahrouss-logic.com)
- * @brief PCI Device Tree implementation.
+ * @brief PCI tree implementation.
  * @version 0.1
  * @date 2024-01-22
  *

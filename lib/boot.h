@@ -150,7 +150,7 @@ void mp_flush_tlb(void);
 
 /// @brief Print current kernel name.
 /// @param
-void mp_print_kernel_name(void);
+void mp_print_name(void);
 
 /// @brief String length getter
 /// @param str the string.

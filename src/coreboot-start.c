@@ -189,7 +189,7 @@ void mp_start_exec(void)
 
 		if (strcmp(buf, "uname") == 0)
 		{
-			mp_print_kernel_name();
+			mp_print_name();
 		}
 		else if (strcmp("echo ", buf) == 0)
 		{
