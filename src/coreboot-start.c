@@ -46,7 +46,7 @@ void mp_start_exec(void)
 	// let the hart 0 init our stuff.
 	if (hart == 1)
 	{
-		mp_put_string(">> Welcome to CoreBoot, (c) Mahrouss-logic. Built the ");
+		mp_put_string(">> Welcome to CoreBoot, (c) SoftwareLabs. Built the ");
 		mp_put_string(__DATE__);
 		mp_put_string("\r\r\n");
 

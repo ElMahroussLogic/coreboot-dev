@@ -8,8 +8,8 @@
  # 	========================================================
  #
 
-CC=ppc-elf-gcc
-AS=ppc-elf-as
+CC=powerpc-linux-gnu-gcc
+AS=powerpc-linux-gnu-as
 
 FIRMWARE=firmware.rom
 
@@ -20,7 +20,7 @@ C_SRC=$(wildcard *.c) $(wildcard ../*.c) -c
 
 AS_FLAGS= -c -I../../
 
-LD=ppc-elf-ld
+LD=powerpc-linux-gnu-ld
 OBJ=*.o
 FLAGS_LD= --script=linkscript.ld -o core-boot.elf -nostdlib
 
