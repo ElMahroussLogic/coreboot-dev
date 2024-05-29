@@ -35,4 +35,7 @@ typedef struct _xcoff_header
 	uint16_t opthdr; // ?: Number of bytes in optional header
 } xcoff_header_t;
 
+typedef xcoff_header_t xcoff_header64_t;
+typedef xcoff_header_t xcoff_header32_t;
+
 #endif // ifndef __XCOFF__
