@@ -46,20 +46,24 @@ void mp_start_exec(void)
 	// let the hart 0 init our stuff.
 	if (hart == 1)
 	{
-		mp_put_string(">> Welcome to CoreBoot, (c) SoftwareLabs. Built the ");
+		mp_put_string(">> Welcome to MobilCoreBoot, (c) SoftwareLabs. Built the ");
 		mp_put_string(__DATE__);
 		mp_put_string("\r\r\n");
 
 #ifdef __COMPILE_POWERPC__
-		mp_put_string(">> CPU: NeWS POWER Machine.\r\r\n");
+		mp_put_string(">> CPU: POWER Machine.\r\r\n");
 #endif // __COMPILE_POWERPC__
 
 #ifdef __COMPILE_AMD64__
-		mp_put_string(">> CPU: NeWS BroadBand Machine.\r\r\n");
+		mp_put_string(">> CPU: BroadBand Machine.\r\r\n");
+#endif // __COMPILE_POWERPC__
+
+#ifdef __COMPILE_ARM64__
+		mp_put_string(">> CPU: ARM64 Machine.\r\r\n");
 #endif // __COMPILE_POWERPC__
 
 #ifdef __COMPILE_RISCV__
-		mp_put_string(">> CPU: NeWS RISC-V Machine.\r\r\n");
+		mp_put_string(">> CPU: RISC-V Machine.\r\r\n");
 #endif // __COMPILE_POWERPC__
 	}
 
@@ -129,6 +133,7 @@ void mp_start_exec(void)
 		}
 	}
 
+#ifndef __COMPILE_ARM64__
 	/// since context isnt present on disk or any removable media, we can run this
 	/// tiny shell now.
 	while (yes)
@@ -230,4 +235,10 @@ void mp_start_exec(void)
 			mp_put_string("\r\n");
 		}
 	}
+#else
+	while (yes)
+	{
+		asm volatile("hlt #0");
+	}
+#endif
 }

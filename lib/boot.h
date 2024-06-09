@@ -42,7 +42,6 @@ typedef const char* caddr_t;
 typedef __UINTPTR_TYPE__ ptrtype_t;
 typedef ptrtype_t		 size_t;
 
-#define mp_sync_synchronize() __sync_synchronize()
 #define array_size(arr)		  (sizeof(arr[0]) / sizeof(arr))
 
 #ifndef nil
@@ -76,17 +75,27 @@ typedef ptrtype_t		 size_t;
 #define SYS_BOOT_ADDR		 (0x80020000)
 #define SYS_BOOT_ADDR_STR	 "0x80020000"
 #define SYS_FRAMEBUFFER_ADDR 0x40000000L
+#define SYS_UART_BASE 0x10000000
+
+#define mp_sync_synchronize() __sync_synchronize()
 #elif defined(__COMPILE_POWERPC__)
+#define SYS_UART_BASE 0x10000000
 #define SYS_BOOT_ADDR		 0x1030000
 #define SYS_BOOT_ADDR_STR	 "0x1030000"
 #define SYS_FRAMEBUFFER_ADDR 0x40000000L
-#else
+
+#define mp_sync_synchronize() __sync_synchronize()
+#elif defined(__COMPILE_ARM64__)
+#define SYS_UART_BASE 0x1c090000
 #define SYS_BOOT_ADDR		 0x1030000
 #define SYS_BOOT_ADDR_STR	 "0x1030000"
 #define SYS_FRAMEBUFFER_ADDR 0x40000000L
+
+static inline void __sync_synchronize(void) {}
+
+#define mp_sync_synchronize() __sync_synchronize()
 #endif // ifndef __COMPILE_POWERPC__
 
-#define SYS_UART_BASE 0x10000000
 
 #define SYS_BAUDRATE_TABLE                                            \
 	{                                                                 \

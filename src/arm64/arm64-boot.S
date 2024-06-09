@@ -7,10 +7,10 @@
 .text
 
 .balign 4
-.global __start
+.global mp_reset_vector
  
-__start
-	mov sp, __mp_stack_end
+mp_reset_vector:
+	ldr sp, =__mp_stack_end
 	/* don't care about page_zero, it's gonna be a raw binary */
     b mp_start_exec
     
