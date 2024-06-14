@@ -3,7 +3,7 @@
  #
  #	CoreBoot
  # 	Date Added: 08/11/2023
- # 	Copyright 2024, SoftwareLabs, all rights reserved.
+ # 	Copyright 2024, Zeta Electronics Corporation, all rights reserved.
  #
  # 	========================================================
  #
@@ -11,7 +11,7 @@
 CC=arm-none-eabi-gcc-13.2.1
 AS=arm-none-eabi-as
 
-FIRMWARE=firmware.rom
+FIRMWARE=boot.rom
 
 FLAGS=-c -D__COMPILE_ARM64__ -I../../ -Wall -c -nostdlib -ffreestanding -fno-builtin \
 		-D__BSTRICT__ -D__BDEBUG__
@@ -29,8 +29,6 @@ EMU_FLAGS=-M vexpress-a15 -cpu cortex-a15 -kernel $(FIRMWARE) -s
 
 WAIT=sleep 1
 
-IMG_CMD=qemu-img create -f qcow2 epm.img 256M
-
 .PHONY: all
 all: firmware-link
 	@echo "[CoreBoot] build done."
@@ -41,9 +39,9 @@ firmware-link: firmware-compile
 
 .PHONY: make-rom
 make-rom:
-	$(IMG_CMD)
-	qemu-img create -f raw firmware.rom 512K
-	dd if=core-boot.elf of=firmware.rom bs=1 seek=0 conv=notrunc
+	qemu-img create -f qcow2 epm.img 256M
+	qemu-img create -f raw boot.rom 512K
+	dd if=core-boot.elf of=boot.rom bs=1 seek=0 conv=notrunc
 
 # compile firmware
 .PHONY: firmware-compile

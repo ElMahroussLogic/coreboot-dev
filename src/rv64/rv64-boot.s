@@ -2,7 +2,7 @@
  *	========================================================
  *
  *	CoreBoot
- * 	Copyright 2024, SoftwareLabs, all rights reserved.
+ * 	Copyright 2024, Zeta Electronics Corporation, all rights reserved.
  *
  *  	Purpose: Startup code for RISC-V.
  *

@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-    Copyright SoftwareLabs
+    Copyright Zeta Electronics Corporation
 
     File: xcoff.h
     Purpose: XCOFF for CoreBoot.

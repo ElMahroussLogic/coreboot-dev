@@ -1,7 +1,7 @@
 # ====================================
 #
-#   SoftwareLabs CoreBoot
-#   (C) SoftwareLabs all rights reserved.
+#   Zeta Electronics Corporation CoreBoot
+#   (C) Zeta Electronics Corporation all rights reserved.
 #
 #   Purpose: Assembler API.
 #

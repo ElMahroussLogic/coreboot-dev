@@ -1,7 +1,7 @@
 [bits 16]
 [org 0x7c00]
 
-;; CoreBoot BIOS extension from SoftwareLabs.
+;; CoreBoot BIOS extension from Zeta Electronics Corporation.
 
 _start:
 	mov si, __stuff_0
@@ -59,7 +59,7 @@ _disk_block_lba:
 _disk_packet_end:
 
 __stuff_0:
-    db ">> SoftwareLabs XPT Kernel (C) 2024 SoftwareLabs all rights reserved.", 0xd, 0xa, 0
+    db ">> Zeta Electronics Corporation XPT Kernel (C) 2024 Zeta Electronics Corporation all rights reserved.", 0xd, 0xa, 0
 
 __stuff_2:
     db ">> Booting from media...", 0xd, 0xa, 0
