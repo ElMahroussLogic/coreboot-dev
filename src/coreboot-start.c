@@ -56,15 +56,15 @@ void mp_start_exec(void)
 
 #ifdef __COMPILE_AMD64__
 		mp_put_string(">> CPU: AMD64 Machine.\r\r\n");
-#endif // __COMPILE_POWERPC__
+#endif // __COMPILE_AMD64__
 
 #ifdef __COMPILE_ARM64__
 		mp_put_string(">> CPU: ARM64 Machine.\r\r\n");
-#endif // __COMPILE_POWERPC__
+#endif // __COMPILE_ARM64__
 
 #ifdef __COMPILE_RISCV__
 		mp_put_string(">> CPU: RISC-V Machine.\r\r\n");
-#endif // __COMPILE_POWERPC__
+#endif // __COMPILE_RISCV__
 	}
 
 	/// @brief Boots here if LX header matches what we except.
