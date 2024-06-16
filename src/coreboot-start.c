@@ -46,7 +46,7 @@ void mp_start_exec(void)
 	// let the hart 0 init our stuff.
 	if (hart == 1)
 	{
-		mp_put_string(">> Welcome to MobilCoreBoot, (c) Zeta Electronics Corporation. Built the ");
+		mp_put_string(">> Welcome to CoreBoot, (c) Zeta Electronics Corporation. Built the ");
 		mp_put_string(__DATE__);
 		mp_put_string("\r\r\n");
 
@@ -55,7 +55,7 @@ void mp_start_exec(void)
 #endif // __COMPILE_POWERPC__
 
 #ifdef __COMPILE_AMD64__
-		mp_put_string(">> CPU: BroadBand Machine.\r\r\n");
+		mp_put_string(">> CPU: AMD64 Machine.\r\r\n");
 #endif // __COMPILE_POWERPC__
 
 #ifdef __COMPILE_ARM64__
