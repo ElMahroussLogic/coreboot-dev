@@ -51,19 +51,23 @@ void mp_start_exec(void)
 		mp_put_string("\r\r\n");
 
 #ifdef __COMPILE_POWERPC__
-		mp_put_string(">> CPU: POWER Machine.\r\r\n");
+		mp_put_string(">> CPU: POWER64.\r\r\n");
 #endif // __COMPILE_POWERPC__
 
 #ifdef __COMPILE_AMD64__
-		mp_put_string(">> CPU: AMD64 Machine.\r\r\n");
+		mp_put_string(">> CPU: AMD64.\r\r\n");
 #endif // __COMPILE_AMD64__
 
 #ifdef __COMPILE_ARM64__
-		mp_put_string(">> CPU: ARM64 Machine.\r\r\n");
+		mp_put_string(">> CPU: ARM64.\r\r\n");
+#endif // __COMPILE_ARM64__
+
+#ifdef __COMPILE_ARM32__
+		mp_put_string(">> CPU: ARM32.\r\r\n");
 #endif // __COMPILE_ARM64__
 
 #ifdef __COMPILE_RISCV__
-		mp_put_string(">> CPU: RISC-V Machine.\r\r\n");
+		mp_put_string(">> CPU: RISC-V.\r\r\n");
 #endif // __COMPILE_RISCV__
 	}
 
