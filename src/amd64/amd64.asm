@@ -1,7 +1,7 @@
 # ====================================
 #
-#   Zeta Electronics Corporation CoreBoot
-#   (C) Zeta Electronics Corporation all rights reserved.
+#   ZKA Technologies CoreBoot
+#   (C) ZKA Technologies all rights reserved.
 #
 #   Purpose: Assembler API.
 #
