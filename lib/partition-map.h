@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-    Copyright Zeta Electronics Corporation
+    Copyright ZKA Technologies
 
 ------------------------------------------- */
 
@@ -21,34 +21,23 @@ typedef struct boot_guid
 /* The first 0 > 128 addresses of a disk contains these headers. */
 
 /**
- * @brief The EPM boot block.
- * Stores information about the disk.
- */
-struct __attribute__((packed)) boot_block
-{
-	ascii_char_t magic[4];
-	ascii_char_t name[32];
-	boot_guid_t	 uuid;
-	int32_t		 version;
-	int64_t		 num_blocks;
-	int64_t		 sector_sz;
-	int64_t		 lba_start;
-};
-
-/**
  * @brief The EPM partition block.
- * used to explain a partition inside a media.
+ * used to represent a partition inside a media.
  */
 struct __attribute__((packed)) part_block
 {
+	ascii_char_t magic[5];
 	ascii_char_t name[32];
+	boot_guid_t  uuid;
 	int32_t		 version;
-	int64_t		 lba_end;
-	int64_t		 sector_sz;
+	int32_t		 num_blocks;
 	int64_t		 lba_start;
+	int64_t		 sector_sz;
+	int64_t		 lba_end;
 	int16_t		 type;
 	int32_t		 fs_version;
 	ascii_char_t fs[16]; /* ffs_2 */
+	ascii_char_t reserved[401];
 };
 
 typedef struct part_block part_block_t;

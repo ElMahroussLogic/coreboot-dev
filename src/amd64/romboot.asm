@@ -109,7 +109,7 @@ _SuperIOConfigurationSerial:
     db 0x03
 
 _SystemCOMTestString:
-    db "NeWS AMD64 Firmware, (c) Zeta Electronics Corporation.", 0xa, 0xd, 0x0
+    db "NeWS AMD64 Firmware, (c) ZKA Technologies.", 0xa, 0xd, 0x0
 
 _SystemDescriptorTable:
     dw 8               ; Length of table
