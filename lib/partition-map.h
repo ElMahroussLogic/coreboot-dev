@@ -73,7 +73,7 @@ typedef struct boot_block boot_block_t;
 ///! use it in the boot block version field.
 enum
 {
-	EPM_MPUX  = 0xcf,
+	EPM_EMBEDDED_OS  = 0xcf,
 	EPM_LINUX = 0x8f,
 	EPM_BSD	  = 0x9f,
 	EPM_NEWOS = 0x1f,
