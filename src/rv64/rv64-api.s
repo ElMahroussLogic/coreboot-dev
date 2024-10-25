@@ -1,7 +1,7 @@
 # ====================================
 #
-#   ZKA Technologies CoreBoot
-#   (C) ZKA Technologies all rights reserved.
+#   ZKA Web Services. CoreBoot
+#   (C) ZKA Web Services. all rights reserved.
 #
 #   Purpose: Assembler API for RISC-V
 #

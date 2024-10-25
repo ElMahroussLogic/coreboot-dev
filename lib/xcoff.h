@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-    Copyright ZKA Technologies
+    Copyright ZKA Web Services.
 
     File: xcoff.h
     Purpose: XCOFF for CoreBoot.

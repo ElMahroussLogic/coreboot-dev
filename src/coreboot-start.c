@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-    Copyright ZKA Technologies
+    Copyright ZKA Web Services.
 
 ------------------------------------------- */
 
@@ -46,7 +46,7 @@ void mp_start_exec(void)
 	// let the hart 0 init our stuff.
 	if (hart == 1)
 	{
-		mp_put_string(">> Welcome to CoreBoot, (c) ZKA Technologies. Built the ");
+		mp_put_string(">> Welcome to CoreBoot, (c) ZKA Web Services.. Built the ");
 		mp_put_string(__DATE__);
 		mp_put_string("\r\r\n");
 

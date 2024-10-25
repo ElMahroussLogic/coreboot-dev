@@ -2,7 +2,7 @@
  *	========================================================
  *
  *	CoreBoot
- * 	Copyright 2024, ZKA Technologies, all rights reserved.
+ * 	Copyright 2024, ZKA Web Services., all rights reserved.
  *
  *  	Purpose: Startup code for RISC-V.
  *

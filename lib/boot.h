@@ -1,13 +1,13 @@
 /* -------------------------------------------
 
-    Copyright ZKA Technologies
+	Copyright ZKA Web Services.
 
 ------------------------------------------- */
 
 #pragma once
 
 ///
-/// @file types.h
+/// @file boot.h
 /// @brief CoreBoot types, data structures, and standard library.
 ///
 
