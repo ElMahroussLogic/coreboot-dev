@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-Copyright ZKA Web Services.
+Copyright EL Mahrouss Logic.
 
 ------------------------------------------- */
 
@@ -8,4 +8,3 @@ Copyright ZKA Web Services.
 #include <lib/partition-map.h>
 #include <lib/pci-tree.h>
 #include <lib/boot.h>
-

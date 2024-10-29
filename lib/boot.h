@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-	Copyright ZKA Web Services.
+	Copyright EL Mahrouss Logic.
 
 ------------------------------------------- */
 

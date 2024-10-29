@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-    Copyright ZKA Web Services.
+    Copyright EL Mahrouss Logic.
 
 ------------------------------------------- */
 
@@ -19,10 +19,10 @@ extern int fdt_finish_reverse_map(void* buf);
 
 /**
  * @brief creates a empty tree with a specified buffer and size.
- * 
+ *
  * @param buf the buffer.
  * @param bufsize the size.
- * @return int 
+ * @return int
  */
 
 int fdt_create_empty_tree(void* buf, int bufsize)

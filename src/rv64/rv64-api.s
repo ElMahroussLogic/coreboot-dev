@@ -1,7 +1,7 @@
 # ====================================
 #
-#   ZKA Web Services. CoreBoot
-#   (C) ZKA Web Services. all rights reserved.
+#   EL Mahrouss Logic. CoreBoot
+#   (C) EL Mahrouss Logic. all rights reserved.
 #
 #   Purpose: Assembler API for RISC-V
 #
@@ -14,4 +14,3 @@ mp_flush_tlb:
     sfence.vma
 
     ret
-

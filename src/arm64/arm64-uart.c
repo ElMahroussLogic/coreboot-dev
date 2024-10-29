@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-    Copyright ZKA Web Services.
+    Copyright EL Mahrouss Logic.
 
 ------------------------------------------- */
 
@@ -29,7 +29,7 @@ void mp_put_char(utf_char_t ch)
 {
 	while (mp_locked_put_char)
 	{
-	
+
 	}
 
 	mp_locked_put_char = yes;
