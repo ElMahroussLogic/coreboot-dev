@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-    Copyright Amlal EL Mahrouss.
+    Copyright (C) 2024, EL Mahrouss Logic, all rights reserved.
 
     File: xcoff.h
     Purpose: XCOFF for CoreBoot.
