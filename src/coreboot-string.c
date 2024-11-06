@@ -1,17 +1,17 @@
 /* -------------------------------------------
 
-    Copyright (C) 2024, Amlal EL Mahrouss, all rights reserved.
+    Copyright (C) 2024, EL Mahrouss Logic, all rights reserved.
 
 ------------------------------------------- */
 
 /**
  * @file coreboot-string.c
- * @author Amlal EL Mahrouss (you@domain.com)
+ * @author EL Mahrouss Logic (you@domain.com)
  * @brief string library.
  * @version 0.1
  * @date 2024-01-16
  *
- * @copyright Copyright (c) 2024 Amlal EL Mahrouss. Corporation
+ * @copyright Copyright (c) 2024 EL Mahrouss Logic. Corporation
  *
  */
 
