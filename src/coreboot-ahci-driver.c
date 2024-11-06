@@ -6,12 +6,12 @@
 
 /**
  * @file coreboot-ahci-driver.cc
- * @author Amlal El Mahrouss (amlal@el-mahrouss-logic.com)
+ * @author Amlal EL Mahrouss (amlal@el-mahrouss-logic.com)
  * @brief PowerPC Disk support, via AHCI.
  * @version 0.2
  * @date 2024-01-16
  *
- * @copyright Copyright (c) 2024, Amlal EL Mahrouss..
+ * @copyright Copyright (c) 2024, EL Mahrouss Logic..
  *
  */
 

@@ -18,7 +18,7 @@
 // @brief Start file // This is where the firmware starts it's initialization //
 // code. //
 
-// @author Amlal El Mahrouss //
+// @author Amlal EL Mahrouss //
 
 /////////////////////////////////////////////////////////////////////////////////////////
 

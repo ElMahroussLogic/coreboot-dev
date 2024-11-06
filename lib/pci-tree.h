@@ -8,7 +8,7 @@
 
 /// @file pci-tree.h
 /// @brief PCI Tree layout.
-/// @author Amlal El Mahrouss
+/// @author Amlal EL Mahrouss
 
 #include <lib/boot.h>
 

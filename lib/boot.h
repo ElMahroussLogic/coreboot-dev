@@ -178,7 +178,7 @@ typedef void (*mp_proc_t)();
 typedef char ascii_char_t;
 
 /// @brief Linear Executable Header
-/// @author Amlal El Mahrouss
+/// @author Amlal EL Mahrouss
 struct __attribute__((aligned(4))) mp_boot_header
 {
 	const ascii_char_t h_mag[2];		// magic number

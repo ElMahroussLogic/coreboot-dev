@@ -6,12 +6,12 @@
 
 /**
  * @file coreboot-pci-tree.c
- * @author Amlal El Mahrouss (amlal@el-mahrouss-logic.com)
+ * @author Amlal EL Mahrouss (amlal@el-mahrouss-logic.com)
  * @brief PCI tree implementation.
  * @version 0.1
  * @date 2024-01-22
  *
- * @copyright Copyright (c) 2024 Amlal EL Mahrouss.
+ * @copyright Copyright (c) 2024 EL Mahrouss Logic.
  *
  */
 
