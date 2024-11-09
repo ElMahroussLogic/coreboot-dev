@@ -1,7 +1,7 @@
 # ====================================
 #
-#   EL Mahrouss Logic. CoreBoot
-#   (c) EL Mahrouss Logic. all rights reserved.
+#   Amlal EL Mahrouss. CoreBoot
+#   (c) Amlal EL Mahrouss. all rights reserved.
 #
 #   Purpose: Assembler API for RISC-V
 #
