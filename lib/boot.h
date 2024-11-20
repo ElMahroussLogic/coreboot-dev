@@ -178,13 +178,13 @@ typedef void (*mp_proc_t)();
 typedef char ascii_char_t;
 
 /// @brief Linear Executable Header
-/// @author EL Mahrouss Logic
+/// @author Amlal EL Mahrouss
 struct __attribute__((aligned(4))) mp_boot_header
 {
 	const ascii_char_t h_mag[2];		// magic number
 	const ascii_char_t h_name[10];		// operating system name
 	const uint32_t	   h_revision;		// firmware revision
-	const uint64_t	   h_start_address; // start address (master/slave thread)
+	const uint64_t	   h_start_address; // start address (master/slave(s) thread)
 };
 
 /// @brief Check if filesystem exists.
