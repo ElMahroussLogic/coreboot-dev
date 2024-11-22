@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-    Copyright (C) 2024, Amlal EL Mahrouss, all rights reserved.
+    Copyright (C) 2024, EL Mahrouss Logic, all rights reserved.
 
 ------------------------------------------- */
 
@@ -8,7 +8,7 @@
 
 /// @file pci-tree.h
 /// @brief PCI Tree layout.
-/// @author Amlal EL Mahrouss
+/// @author EL Mahrouss Logic
 
 #include <lib/boot.h>
 
