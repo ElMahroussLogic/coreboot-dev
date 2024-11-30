@@ -1,5 +1,5 @@
 ;; AMD64 CoreBoot Sample program.
-;; Written by EL Mahrouss Logic
+;; Written by ELMH Group
 
 [bits 16]
 [org 0x7c00]

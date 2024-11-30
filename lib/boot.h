@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-	Copyright (C) 2024, EL Mahrouss Logic, all rights reserved.
+	Copyright (C) 2024, ELMH Group, all rights reserved.
 
 ------------------------------------------- */
 
@@ -178,7 +178,7 @@ typedef void (*mp_proc_t)();
 typedef char ascii_char_t;
 
 /// @brief Linear Executable Header
-/// @author EL Mahrouss Logic
+/// @author ELMH Group
 struct __attribute__((aligned(4))) mp_boot_header
 {
 	const ascii_char_t h_mag[2];		// magic number

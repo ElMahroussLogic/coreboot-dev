@@ -1,8 +1,8 @@
 # CoreBoot
 ## Multi-Platform IPL.
 
-Author: EL Mahrouss Logic
+Author: ELMH Group
 </br>
 Purpose: A firmware for 64x0, RISC-V, AMD64 and POWER architectures.
 
-###### Copyright 2024, EL Mahrouss Logic. all rights reserved.
+###### Copyright 2024, ELMH Group. all rights reserved.
