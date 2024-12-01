@@ -46,7 +46,7 @@ void mp_start_exec(void)
 	// let the hart 0 init our stuff.
 	if (hart == 1)
 	{
-		mp_put_string(">> Welcome to CoreBoot, (c) ELMH Group.. Built the ");
+		mp_put_string(">> Welcome to CoreBoot, (c) ELMH Group. Built the ");
 		mp_put_string(__DATE__);
 		mp_put_string("\r\r\n");
 
@@ -89,14 +89,14 @@ void mp_start_exec(void)
 		{
 			if (hart == 1)
 			{
-				mp_put_string(">> Can't boot context. (CB0003)\r\n");
+				mp_put_string(">> Can't Boot the second ROM, trying the disk... (CB0003)\r\n");
 			}
 		}
 		else
 		{
 			if (hart == 1)
 			{
-				mp_put_string(">> Switch to context: ");
+				mp_put_string(">> Switch to ROM: ");
 				mp_put_string((const char*)boot_hdr->h_name);
 				mp_put_char('\r');
 				mp_put_char('\n');
@@ -110,14 +110,14 @@ void mp_start_exec(void)
 				mp_start_context(boot_hdr->h_start_address);
 			}
 
-			mp_put_string(">> Context returned? (CB0002)\r\n");
+			mp_put_string(">> ROM returned? (CB0002)\r\n");
 		}
 	}
 	else
 	{
 		if (hart == 1)
 		{
-			mp_put_string(">> Can't boot context. (CB0001)\r\n");
+			mp_put_string(">> Can't boot ROM. (CB0001)\r\n");
 		}
 	}
 

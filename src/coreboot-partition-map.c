@@ -9,20 +9,25 @@
 
 // include this for documentation.
 
-static const __SIZE_TYPE__ mp_filesystems_count = 1;
-static const caddr_t	   mp_filesystems[]		= {"NewFS"};
+#define MP_FILESYSTEM_COUNT 3
+#define MP_FILESYSTEM_LIST     \
+	{                          \
+		"NeFS", "HPFS", "HFS+" \
+	}
 
 /// @brief check if filesystem is supported by CoreBoot.
 /// @param fs the filesystem magic, as provided by EPM.
-boolean mp_filesystem_exists(caddr_t fs)
+boolean mp_filesystem_exists(caddr_t fs, size_t len)
 {
 	if (fs == nil ||
 		*fs == 0)
 		return no;
 
-	for (size_t fs_index = 0; fs_index < mp_filesystems_count; fs_index++)
+	char* fs_list[] = MP_FILESYSTEM_LIST;
+
+	for (size_t fs_index = 0; fs_index < MP_FILESYSTEM_COUNT; fs_index++)
 	{
-		if (strncmp(mp_filesystems[fs_index], fs, strlen(mp_filesystems[fs_index])) == 0)
+		if (strncmp(fs_list[fs_index], fs, strlen(fs_list[fs_index])) == 0)
 		{
 			return yes;
 		}

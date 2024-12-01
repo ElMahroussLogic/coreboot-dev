@@ -1,7 +1,7 @@
 # ====================================
 #
-#   ELMH Group. CoreBoot
-#   (c) ELMH Group. all rights reserved.
+#   ELMH Group CoreBoot
+#   (c) ELMH Group all rights reserved.
 #
 #   Purpose: Assembler API for RISC-V
 #

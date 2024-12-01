@@ -8,7 +8,7 @@
  # 	========================================================
  #
 
-CC=arm-none-eabi-gcc-13.2.1
+CC=arm-none-eabi-gcc
 AS=arm-none-eabi-as
 
 FIRMWARE=boot.rom

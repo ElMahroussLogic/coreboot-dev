@@ -11,7 +11,7 @@
  * @version 0.2
  * @date 2024-01-16
  *
- * @copyright Copyright (c) 2024, ELMH Group..
+ * @copyright Copyright (c) 2024, ELMH Group.
  *
  */
 
@@ -48,7 +48,7 @@ typedef struct hba_port
 } hba_port_t;
 
 /// @brief Check if port is active.
-/// @param port
+/// @param port host bus address port.
 /// @return
 static boolean hba_port_active(volatile hba_port_t* port)
 {
@@ -59,7 +59,7 @@ static boolean hba_port_active(volatile hba_port_t* port)
 }
 
 /// @brief Start HBA command.
-/// @param port
+/// @param port host bus address port.
 /// @return
 static boolean hba_start_cmd(volatile hba_port_t* port)
 {
@@ -83,7 +83,7 @@ static boolean hba_start_cmd(volatile hba_port_t* port)
 }
 
 /// @brief Stop HBA command.
-/// @param port
+/// @param port host bus address port.
 /// @return
 static boolean hba_stop_cmd(volatile hba_port_t* port)
 {

@@ -14,6 +14,10 @@ void mp_print_name(void)
 	mp_put_string(">> CoreBoot for POWER.\r\n");
 #endif // __COMPILE_POWERPC__
 
+#ifdef __COMPILE_ARM64__
+	mp_put_string(">> CoreBoot for ARM64.\r\n");
+#endif // __COMPILE_POWERPC__
+
 #ifdef __COMPILE_AMD64__
 	mp_put_string(">> CoreBoot for AMD64.\r\n");
 #endif // __COMPILE_POWERPC__

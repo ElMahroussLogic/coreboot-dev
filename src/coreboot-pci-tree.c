@@ -11,7 +11,7 @@
  * @version 0.1
  * @date 2024-01-22
  *
- * @copyright Copyright (c) 2024 ELMH Group.
+ * @copyright Copyright (c) 2024 ELMH Group
  *
  */
 
@@ -21,7 +21,7 @@
 /// BUGS: 0
 
 /// Standard Root table (Mahrouss Table)
-#define SYS_PCI_ROOT_NAME "/mahrouss/@/"
+#define SYS_PCI_ROOT_NAME "/elmh/@/"
 
 static struct hw_mp_pci_tree* mp_base_tree	 = nil;
 static struct hw_mp_pci_tree* mp_latest_tree = nil;

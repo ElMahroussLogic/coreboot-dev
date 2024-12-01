@@ -6,12 +6,12 @@
 
 /**
  * @file coreboot-string.c
- * @author ELMH Group (you@domain.com)
+ * @author ELMH Group (amlal@el-mahrouss-logic.com)
  * @brief string library.
  * @version 0.1
  * @date 2024-01-16
  *
- * @copyright Copyright (c) 2024 ELMH Group. Corporation
+ * @copyright Copyright (c) 2024 ELMH Group
  *
  */
 

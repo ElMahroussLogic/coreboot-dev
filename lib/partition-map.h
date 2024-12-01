@@ -28,7 +28,7 @@ struct __attribute__((packed)) part_block
 {
 	ascii_char_t magic[5];
 	ascii_char_t name[32];
-	boot_guid_t  uuid;
+	boot_guid_t	 uuid;
 	int32_t		 version;
 	int32_t		 num_blocks;
 	int64_t		 lba_start;
@@ -61,9 +61,6 @@ typedef struct boot_block boot_block_t;
 /* @brief POWER magic for EPM */
 #define EPM_MAGIC_PPC "EPMPC"
 
-/* @brief UEFI magic for EPM */
-#define EPM_MAGIC_UEFI "EPMUE"
-
 #define EPM_MAX_BLKS 128 /* 1 on UEFI EPM. */
 
 #define EPM_BOOT_BLK_SZ sizeof(struct boot_block)
@@ -73,10 +70,10 @@ typedef struct boot_block boot_block_t;
 ///! use it in the boot block version field.
 enum
 {
-	EPM_EMBEDDED_OS  = 0xcf,
-	EPM_LINUX = 0x8f,
-	EPM_BSD	  = 0x9f,
-	EPM_NEWOS = 0x1f,
+	EPM_EMBEDDED_OS = 0xcf,
+	EPM_LINUX		= 0x8f,
+	EPM_BSD			= 0x9f,
+	EPM_NEWOS		= 0x1f,
 };
 
 /// @brief Start of EPM headers.
@@ -87,9 +84,9 @@ enum
 /// @brief EPM revision (actually at version 2)
 #define EPM_REVISION (2U)
 
-/// @brief EPM revision for UEFI (16)
-#define EPM_REVISION_UEFI (0xF)
-
 /// END SPECS
+
+/// @brief check for supported filesystem.
+boolean mp_filesystem_exists(caddr_t fs, size_t len);
 
 #endif // ifndef __PARTITION_MAP_H__
