@@ -1,17 +1,17 @@
 /* -------------------------------------------
 
-    Copyright (C) 2024, ELMH Group, all rights reserved.
+    Copyright (C) 2024, Amlal EL Mahrouss, all rights reserved.
 
 ------------------------------------------- */
 
 /**
  * @file coreboot-pci-tree.c
- * @author ELMH Group (amlal@el-mahrouss-logic.com)
+ * @author Amlal EL Mahrouss (amlal@el-mahrouss-logic.com)
  * @brief PCI tree implementation.
  * @version 0.1
  * @date 2024-01-22
  *
- * @copyright Copyright (c) 2024 ELMH Group
+ * @copyright Copyright (c) 2024 Amlal EL Mahrouss
  *
  */
 

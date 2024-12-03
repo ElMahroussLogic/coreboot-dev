@@ -1,5 +1,5 @@
 ;; AMD64 CoreBoot Master Boot Program.
-;; Written by ELMH Group
+;; Written by Amlal EL Mahrouss
 
 %define ENTRYPOINT 0x00FF
 

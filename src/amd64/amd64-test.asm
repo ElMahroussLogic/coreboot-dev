@@ -1,5 +1,5 @@
 ;; AMD64 CoreBoot Sample program.
-;; Written by ELMH Group
+;; Written by Amlal EL Mahrouss
 
 [bits 16]
 [org 0x7c00]

@@ -1,17 +1,17 @@
 /* -------------------------------------------
 
-    Copyright (C) 2024, ELMH Group, all rights reserved.
+    Copyright (C) 2024, Amlal EL Mahrouss, all rights reserved.
 
 ------------------------------------------- */
 
 /**
  * @file coreboot-ahci-driver.cc
- * @author ELMH Group (amlal@el-mahrouss-logic.com)
+ * @author Amlal EL Mahrouss (amlal@el-mahrouss-logic.com)
  * @brief PowerPC Disk support, via AHCI.
  * @version 0.2
  * @date 2024-01-16
  *
- * @copyright Copyright (c) 2024, ELMH Group.
+ * @copyright Copyright (c) 2024, Amlal EL Mahrouss.
  *
  */
 
